@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Aug 23 01:40:55 BRT 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0148-012a-cc8c-000002e57440 
+on database directory C:\Users\Nego Leo\git\H2Project\h2db with class loader sun.misc.Launcher$AppClassLoader@dad4feb 
+Loaded from file:/C:/Users/Nego%20Leo/git/H2Project/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_25-b17
+user.dir=C:\Users\Nego Leo\git\H2Project
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
