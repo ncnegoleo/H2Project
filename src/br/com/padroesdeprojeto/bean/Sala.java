@@ -1,4 +1,4 @@
-package br.com.padroesdeprojeto.model;
+package br.com.padroesdeprojeto.bean;
 
 /**
  * Esta classe serve como modelo para a gravação dos objetos Sala na base de

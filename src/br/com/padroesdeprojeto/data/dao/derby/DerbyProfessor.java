@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.padroesdeprojeto.bean.Professor;
 import br.com.padroesdeprojeto.data.dao.ProfessorDaoIF;
-import br.com.padroesdeprojeto.model.Professor;
 
 /**
  * Esta classe faz a interação da entrada dos dados do professor com o banco de
@@ -47,7 +47,7 @@ public class DerbyProfessor implements ProfessorDaoIF {
 	@Override
 	public void deleta(String matricula) {
 		
-		// sql para remove um professor
+		// sql para remover um professor
 		String SQL_STATEMENT = "DELETE FROM PROFESSOR WHERE MATRICULA = '"
 				+ matricula + "'";
 		

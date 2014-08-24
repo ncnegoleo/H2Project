@@ -2,8 +2,8 @@ package br.com.padroesdeprojeto.data.dao;
 
 import java.util.ArrayList;
 
-import br.com.padroesdeprojeto.model.Curso;
-import br.com.padroesdeprojeto.model.Periodo;
+import br.com.padroesdeprojeto.bean.Curso;
+import br.com.padroesdeprojeto.bean.Periodo;
 
 /**
  * Esta interface segue server para padronizar a implementação dos métodos de

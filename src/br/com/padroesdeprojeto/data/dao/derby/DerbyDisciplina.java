@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.padroesdeprojeto.bean.Disciplina;
 import br.com.padroesdeprojeto.data.dao.DisciplinaDaoIF;
-import br.com.padroesdeprojeto.model.Disciplina;
 
 /**
  * Esta classe faz a interação da entrada dos dados da disciplina com o banco de

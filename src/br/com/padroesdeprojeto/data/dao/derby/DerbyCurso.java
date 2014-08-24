@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.padroesdeprojeto.bean.Curso;
 import br.com.padroesdeprojeto.data.dao.CursoDaoIF;
-import br.com.padroesdeprojeto.model.Curso;
 
 /**
  * Esta classe faz a interação da entrada dos dados do curso com o banco de

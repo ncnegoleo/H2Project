@@ -1,4 +1,4 @@
-package br.com.padroesdeprojeto.model;
+package br.com.padroesdeprojeto.bean;
 
 import br.com.padroesdeprojeto.exceptions.H2Exception;
 

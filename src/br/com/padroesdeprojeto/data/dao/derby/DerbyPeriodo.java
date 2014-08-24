@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.padroesdeprojeto.bean.Periodo;
 import br.com.padroesdeprojeto.data.dao.PeriodoDaoIF;
-import br.com.padroesdeprojeto.model.Periodo;
 
 /**
  * Esta classe faz a interação da entrada dos dados do periodo com o banco de

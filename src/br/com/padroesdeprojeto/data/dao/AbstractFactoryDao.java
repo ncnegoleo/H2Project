@@ -1,17 +1,17 @@
 package br.com.padroesdeprojeto.data.dao;
 
+import br.com.padroesdeprojeto.bean.Curso;
+import br.com.padroesdeprojeto.bean.Disciplina;
+import br.com.padroesdeprojeto.bean.Periodo;
+import br.com.padroesdeprojeto.bean.Professor;
+import br.com.padroesdeprojeto.bean.Sala;
+import br.com.padroesdeprojeto.bean.Turma;
 import br.com.padroesdeprojeto.data.dao.derby.DerbyCurso;
 import br.com.padroesdeprojeto.data.dao.derby.DerbyDisciplina;
 import br.com.padroesdeprojeto.data.dao.derby.DerbyPeriodo;
 import br.com.padroesdeprojeto.data.dao.derby.DerbyProfessor;
 import br.com.padroesdeprojeto.data.dao.derby.DerbySala;
 import br.com.padroesdeprojeto.data.dao.derby.DerbyTurma;
-import br.com.padroesdeprojeto.model.Curso;
-import br.com.padroesdeprojeto.model.Disciplina;
-import br.com.padroesdeprojeto.model.Periodo;
-import br.com.padroesdeprojeto.model.Professor;
-import br.com.padroesdeprojeto.model.Sala;
-import br.com.padroesdeprojeto.model.Turma;
 
 /**
  * Esta classe serve para a criação de objetos e para a manipulação dos dados dos

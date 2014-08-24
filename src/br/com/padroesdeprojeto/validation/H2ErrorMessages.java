@@ -9,9 +9,13 @@ public enum H2ErrorMessages {
 	CURSONAOCADASTRADO("Curso não Cadastrado"),
 	CURSOJACADASTRADO("Curso não Cadastrado"),
 	SALANAOCADASTRADA("Sala não cadastrada"),
+	SALAJACADASTRADA("Sala já cadastrada"),
 	PERIODONAOCADASTRADO("Periodo não Cadastrado"),
+	PERIODOJACADASTRADO("Periodo já cadastrado"),
+	DISCIPLINANAOCADASTRADA("Disciplina não cadastrada"),
 	DISCIPLINAJACADASTRADA("Disciplina já cadastrada"),
-	DISCIPLINANAOCADASTRADA("Disciplina não cadastrada");
+	TURMANAOCADASTRADA("Turma não cadastrada"),
+	TURMAJACADASTRADA("Turma já cadastrada");
 	
 	
 	private final String valor;

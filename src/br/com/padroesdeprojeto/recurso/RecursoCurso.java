@@ -1,8 +1,8 @@
 package br.com.padroesdeprojeto.recurso;
 
+import br.com.padroesdeprojeto.bean.Curso;
 import br.com.padroesdeprojeto.data.dao.AbstractFactoryDao;
 import br.com.padroesdeprojeto.exceptions.H2Exception;
-import br.com.padroesdeprojeto.model.Curso;
 import br.com.padroesdeprojeto.validation.H2ErrorMessages;
 import br.com.padroesdeprojeto.validation.H2Validation;
 
@@ -29,25 +29,24 @@ public class RecursoCurso {
 	public void addCurso(String id, String nome) throws H2Exception {
 
 		Curso curso = new Curso();
+		String[] params = { id, nome };
 
-		// valida se a entrada do id do curso esta de acordo com as regras
-		if (H2Validation.validaCampos(id,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()))
-			curso.setId(id);
+		// Verifica se os parametros são nulos ou vazios
+		H2Validation.validaParametros(params,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
-		// valida se a entrada do nome do curso esta de acordo com as regras
-		if (H2Validation.validaCampos(nome,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()))
-			curso.setNome(nome);
+		curso.setId(id);
+
+		curso.setNome(nome);
 
 		// verifica se não existe curso com a mesma sigla no banco.
-		if (AbstractFactoryDao.createCursoDaoIF().getCursoBySilga(id) == null) {
+		if (H2Validation.validaObjetosNulos(AbstractFactoryDao
+				.createCursoDaoIF().getCursoBySilga(id),
+				H2ErrorMessages.CURSOJACADASTRADO.getValor())) {
+
 			// insere um novo curso no banco de dados.
 			AbstractFactoryDao.createCursoDaoIF().insere(curso);
-			return;
 		}
-
-		throw new H2Exception(H2ErrorMessages.CURSOJACADASTRADO.getValor());
 	}
 
 	/**
@@ -66,27 +65,24 @@ public class RecursoCurso {
 	public void alterarCurso(String identificador, String novoValor)
 			throws H2Exception {
 
-		// valida se a entrada do identificador esta de acordo com as regras.
-		if (H2Validation.validaCampos(identificador,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()));
+		String[] params = { identificador, novoValor };
 
-		// valida se a entrada do novo nome esta de acordo com as regras.
-		if (H2Validation.validaCampos(novoValor,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()));
+		// Verifica se os parametros são nulos ou vazios
+		H2Validation.validaParametros(params,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// Recupera um curso do banco a partir da seu identificador.
 		Curso curso = AbstractFactoryDao.createCursoDaoIF().getCursoBySilga(
 				identificador);
 
 		// Verfica se o curso existe na base de dados
-		if (H2Validation.validaObjetosNaoNulos(curso,
-				H2ErrorMessages.CURSONAOCADASTRADO.getValor())) {
-		}
+		H2Validation.validaObjetosNaoNulos(curso,
+				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
 
 		// Altera o nome do curso.
 		curso.setNome(novoValor);
 
-		// altera o curso no banco de dados.
+		// Altera o curso no banco de dados.
 		AbstractFactoryDao.createCursoDaoIF().altera(curso);
 	}
 
@@ -103,14 +99,14 @@ public class RecursoCurso {
 	public void removeCurso(String identificador) throws H2Exception {
 
 		// valida se a entrada do identificador esta de acordo com as regras.
-		if (H2Validation.validaCampos(identificador,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()));
+		H2Validation.validaCampos(identificador,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// verifica se existe cursos com o id igual ao do parâmetro
 		// no banco
-		if (H2Validation.validaObjetosNaoNulos(AbstractFactoryDao.createCursoDaoIF()
-				.getCursoBySilga(identificador),
-				H2ErrorMessages.CURSONAOCADASTRADO.getValor()));
+		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
+				.createCursoDaoIF().getCursoBySilga(identificador),
+				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
 
 		// remove o curso do banco
 		AbstractFactoryDao.createCursoDaoIF().deleta(identificador);
@@ -131,8 +127,8 @@ public class RecursoCurso {
 	public String getCurso(String idCurso) throws H2Exception {
 
 		// valida se a entrada do id está de acordo com as regras.
-		if (H2Validation.validaCampos(idCurso,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()));
+		H2Validation.validaCampos(idCurso,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// se existir, retorna um curso com o id igual a do
 		// parâmetro no banco, se não existir o valor instância será nulo.
@@ -140,8 +136,8 @@ public class RecursoCurso {
 				idCurso);
 
 		// Verfica se o professor existe na base de dados
-		if (H2Validation.validaObjetosNaoNulos(curso,
-				H2ErrorMessages.CURSONAOCADASTRADO.getValor()));
+		H2Validation.validaObjetosNaoNulos(curso,
+				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
 
 		// "ToString"
 		return curso.toString();

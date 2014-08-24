@@ -1,7 +1,8 @@
 package br.com.padroesdeprojeto.data.dao;
 
 import java.util.ArrayList;
-import br.com.padroesdeprojeto.model.Professor;
+
+import br.com.padroesdeprojeto.bean.Professor;
 
 /**
  * Esta interface segue server para padronizar a implementação dos métodos de

@@ -67,8 +67,8 @@ public class Fachada implements FachadaIF {
 	@Override
 	public String getDisciplina(String idCurso, String idDisciplina)
 			throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return AbstractFactoryRecurso.createRecursoDisciplina().getDisciplina(
+				idCurso, idDisciplina);
 	}
 
 	@Override
@@ -118,7 +118,9 @@ public class Fachada implements FachadaIF {
 			String identificadorProfessor, String identificadorDisciplina,
 			String identificadorSala, String identificadorPeriodo)
 			throws H2Exception {
-		// TODO Auto-generated method stub
+		AbstractFactoryRecurso.createRecursoTurma().addTurma(idTurma, idCurso,
+				identificadorProfessor, identificadorDisciplina,
+				identificadorSala, identificadorPeriodo);
 
 	}
 

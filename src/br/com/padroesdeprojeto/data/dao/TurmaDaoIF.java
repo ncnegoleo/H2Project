@@ -2,9 +2,9 @@ package br.com.padroesdeprojeto.data.dao;
 
 import java.util.ArrayList;
 
-import br.com.padroesdeprojeto.model.Periodo;
-import br.com.padroesdeprojeto.model.Professor;
-import br.com.padroesdeprojeto.model.Turma;
+import br.com.padroesdeprojeto.bean.Periodo;
+import br.com.padroesdeprojeto.bean.Professor;
+import br.com.padroesdeprojeto.bean.Turma;
 
 /**
  * Esta interface segue server para padronizar a implementação dos métodos de
@@ -37,7 +37,7 @@ public interface TurmaDaoIF {
 	 * 
 	 * @see Turma
 	 */
-	public void altera(Turma t, int id);
+	public void altera(Turma t, String id);
 
 	/**
 	 * Esta assinatura de método serve para implementação do método de remoção
@@ -48,7 +48,7 @@ public interface TurmaDaoIF {
 	 * 
 	 * @see Turma
 	 */
-	public void deleta(int id);
+	public void deleta(String id);
 
 	/**
 	 * Esta assinatura de método serve para implementação do método que recupera
@@ -71,15 +71,5 @@ public interface TurmaDaoIF {
 	 * 
 	 * @see Turma
 	 */
-	public Turma getTurmaByName(String nome);
-
-	/**
-	 * Esta assinatura de método serve para a implementação do método que
-	 * retorna o numero de turmas gravados.
-	 * 
-	 * @return Um numero que representa o número de turmas gravados.
-	 * 
-	 * @see Professor
-	 */
-	public int countTurmas();
+	public Turma getTurmaById(String id);
 }

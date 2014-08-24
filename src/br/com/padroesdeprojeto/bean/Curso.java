@@ -1,4 +1,4 @@
-package br.com.padroesdeprojeto.model;
+package br.com.padroesdeprojeto.bean;
 
 
 public class Curso {

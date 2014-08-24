@@ -1,11 +1,11 @@
 package br.com.padroesdeprojeto.recurso;
 
-import br.com.padroesdeprojeto.model.Curso;
-import br.com.padroesdeprojeto.model.Disciplina;
-import br.com.padroesdeprojeto.model.Periodo;
-import br.com.padroesdeprojeto.model.Professor;
-import br.com.padroesdeprojeto.model.Sala;
-import br.com.padroesdeprojeto.model.Turma;
+import br.com.padroesdeprojeto.bean.Curso;
+import br.com.padroesdeprojeto.bean.Disciplina;
+import br.com.padroesdeprojeto.bean.Periodo;
+import br.com.padroesdeprojeto.bean.Professor;
+import br.com.padroesdeprojeto.bean.Sala;
+import br.com.padroesdeprojeto.bean.Turma;
 
 /**
  * Esta classe serve para a criação de objetos e para a manipulação dos dados dos

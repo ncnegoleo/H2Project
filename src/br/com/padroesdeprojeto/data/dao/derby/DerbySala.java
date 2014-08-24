@@ -4,8 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import br.com.padroesdeprojeto.bean.Sala;
 import br.com.padroesdeprojeto.data.dao.SalaDaoIF;
-import br.com.padroesdeprojeto.model.Sala;
 
 /**
  * Esta classe faz a interação da entrada dos dados da sala com o banco de

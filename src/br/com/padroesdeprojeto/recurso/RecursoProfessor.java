@@ -1,8 +1,8 @@
 package br.com.padroesdeprojeto.recurso;
 
+import br.com.padroesdeprojeto.bean.Professor;
 import br.com.padroesdeprojeto.data.dao.AbstractFactoryDao;
 import br.com.padroesdeprojeto.exceptions.H2Exception;
-import br.com.padroesdeprojeto.model.Professor;
 import br.com.padroesdeprojeto.validation.H2ErrorMessages;
 import br.com.padroesdeprojeto.validation.H2Validation;
 
@@ -31,25 +31,24 @@ public class RecursoProfessor {
 	public void addProfessor(String nome, String matricula) throws H2Exception {
 
 		Professor professor = new Professor();
-		String[] params = {nome,matricula};
+		String[] params = { nome, matricula };
 
-		H2Validation.validaParametros(params, H2ErrorMessages.
-				ATRIBUTOINVALIDO.getValor());
-		
+		// Verifica se os parametros são nulos ou vazios
+		H2Validation.validaParametros(params,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
 		professor.setNome(nome);
-		
+
 		professor.setMatricula(matricula);
-		
+
 		// verifica se não existe professores com a mesma matricula no banco.
-		if (H2Validation.validaObjetosNulos(AbstractFactoryDao.
-				createProfessorDaoIF().getProfessorByMatricula(
-				matricula), H2ErrorMessages.PROFESSORJACADASTRADO.getValor())) {
+		if (H2Validation.validaObjetosNulos(AbstractFactoryDao
+				.createProfessorDaoIF().getProfessorByMatricula(matricula),
+				H2ErrorMessages.PROFESSORJACADASTRADO.getValor())) {
+
 			// insere um novo professor no banco de dados.
 			AbstractFactoryDao.createProfessorDaoIF().insere(professor);
-			return;
 		}
-
-		//throw new H2Exception("Professor já cadastrado");
 	}
 
 	/**
@@ -66,19 +65,19 @@ public class RecursoProfessor {
 	 */
 	public void alteraProfessor(String matricula, String novoNome)
 			throws H2Exception {
-		
-		String[] params = {matricula, novoNome};
 
-		H2Validation.validaParametros(params, H2ErrorMessages.
-				ATRIBUTOINVALIDO.getValor());
+		String[] params = { matricula, novoNome };
+
+		H2Validation.validaParametros(params,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// Recupera um professor do banco a partir da sua matricula.
 		Professor professor = AbstractFactoryDao.createProfessorDaoIF()
 				.getProfessorByMatricula(matricula);
 
 		// Verfica se o professor existe na base de dados
-		if (H2Validation.validaObjetosNaoNulos(professor, H2ErrorMessages.
-				PROFESSORNAOCADASTRADO.getValor()));
+		H2Validation.validaObjetosNaoNulos(professor,
+				H2ErrorMessages.PROFESSORNAOCADASTRADO.getValor());
 
 		// Altera o nome do profesor
 		professor.setNome(novoNome);
@@ -101,12 +100,13 @@ public class RecursoProfessor {
 	public void removeProfessor(String matricula) throws H2Exception {
 
 		// valida se a entrada da matricula esta de acordo com as regras.
-		if (H2Validation.validaCampos(matricula, "Atributo inválido"));
+		H2Validation.validaCampos(matricula,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// Verfica se o professor existe na base de dados
-		if (H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
+		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createProfessorDaoIF().getProfessorByMatricula(matricula),
-				"Matrícula não existente"));
+				H2ErrorMessages.PROFESSORNAOCADASTRADO.getValor());
 
 		// Remove o professor da base de dados
 		AbstractFactoryDao.createProfessorDaoIF().deleta(matricula);
@@ -118,7 +118,7 @@ public class RecursoProfessor {
 	 * 
 	 * @param matricula
 	 *            A matricula do professor
-	 *            
+	 * 
 	 * @return ToString do Objeto
 	 * 
 	 * @throws H2Exception
@@ -128,7 +128,8 @@ public class RecursoProfessor {
 	public String getProfessor(String matricula) throws H2Exception {
 
 		// valida se a entrada da matricula esta de acordo com as regras.
-		if (H2Validation.validaCampos(matricula, "Atributo inválido"));
+		H2Validation.validaCampos(matricula,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// se existir, retorna um professores com a matricula igual a do
 		// parâmetro no banco, se não existir o valor instância será nulo.
@@ -136,7 +137,8 @@ public class RecursoProfessor {
 				.getProfessorByMatricula(matricula);
 
 		// Verfica se o professor existe na base de dados
-		if (H2Validation.validaObjetosNaoNulos(professor, "Professor não cadastrado."));
+		H2Validation.validaObjetosNaoNulos(professor,
+				H2ErrorMessages.PROFESSORNAOCADASTRADO.getValor());
 
 		// "ToString"
 		return professor.toString();

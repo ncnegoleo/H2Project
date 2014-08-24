@@ -1,8 +1,9 @@
 package br.com.padroesdeprojeto.recurso;
 
+import br.com.padroesdeprojeto.bean.Periodo;
 import br.com.padroesdeprojeto.data.dao.AbstractFactoryDao;
 import br.com.padroesdeprojeto.exceptions.H2Exception;
-import br.com.padroesdeprojeto.model.Periodo;
+import br.com.padroesdeprojeto.validation.H2ErrorMessages;
 import br.com.padroesdeprojeto.validation.H2Validation;
 
 /**
@@ -14,8 +15,7 @@ import br.com.padroesdeprojeto.validation.H2Validation;
 public class RecursoPeriodo {
 
 	/**
-	 * Este método serve controlador para a adição de novos periodos no
-	 * sistema.
+	 * Este método serve controlador para a adição de novos periodos no sistema.
 	 * 
 	 * @param nomePeriodo
 	 *            Nome do periodo no formato "2013.1"
@@ -30,30 +30,31 @@ public class RecursoPeriodo {
 
 		Periodo periodo = new Periodo();
 
-		// Valida se a entrada do nome do periodo.
-		if (H2Validation.validaCampos(nomePeriodo, "Atributo inválido"))
-			periodo.setNomePeriodo(nomePeriodo);
-		
-		// Valida se a entrada da sigla.
-		if (H2Validation.validaCampos(sigla, "Atributo inválido"));
+		String[] params = { nomePeriodo, sigla };
+
+		// Verifica se os parametros são nulos ou vazios
+		H2Validation.validaParametros(params,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
+		periodo.setNomePeriodo(nomePeriodo);
 
 		// Verifica se existe o curso cadastrado
-		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao.createCursoDaoIF().
-				getCursoBySilga(sigla), "Curso não cadastrado");
-		
+		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
+				.createCursoDaoIF().getCursoBySilga(sigla),
+				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
+
 		// Verifica se já existe o perido cadastrado no mesmo curso.
-		if(AbstractFactoryDao.createPeriodoDaoIF().getPeriodoByName(nomePeriodo,
-				sigla) == null) {
+		if (H2Validation.validaObjetosNulos(AbstractFactoryDao
+				.createPeriodoDaoIF().getPeriodoByName(nomePeriodo, sigla),
+				H2ErrorMessages.PERIODOJACADASTRADO.getValor())) {
+
+			// insere um novo periodo no banco
 			AbstractFactoryDao.createPeriodoDaoIF().insere(periodo, sigla);
-			return;
 		}
-		
-		throw new H2Exception("Periodo já cadastrado");
 	}
 
 	/**
-	 * Este método como controlador para a remoção de periodos na base de
-	 * dados
+	 * Este método como controlador para a remoção de periodos na base de dados
 	 *
 	 * @param sigla
 	 *            A sigla do curso do periodo que o periodo pertence.
@@ -66,20 +67,20 @@ public class RecursoPeriodo {
 	 */
 	public void removePeriodo(String sigla, String nomePeriodo)
 			throws H2Exception {
-		
-		// Valida se a entrada da sigla.
-		if (H2Validation.validaCampos(sigla, "Atributo inválido"));
 
-		// Valida se a entrada do nome do periodo.
-		if (H2Validation.validaCampos(nomePeriodo, "Atributo inválido"));
-		
+		String[] params = { nomePeriodo, sigla };
+
+		// Verifica se os parametros são nulos ou vazios
+		H2Validation.validaParametros(params,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
 		// Verifica se existe o periodo cadastrado
-		if (H2Validation.validaObjetosNaoNulos(AbstractFactoryDao.createPeriodoDaoIF()
-				.getPeriodoByName(nomePeriodo, sigla), "Periodo não cadastrado"));
-		
+		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
+				.createPeriodoDaoIF().getPeriodoByName(nomePeriodo, sigla),
+				H2ErrorMessages.PERIODONAOCADASTRADO.getValor());
+
 		// Deleta o perido do banco
-		AbstractFactoryDao.createPeriodoDaoIF().deleta(nomePeriodo,
-				sigla);
+		AbstractFactoryDao.createPeriodoDaoIF().deleta(nomePeriodo, sigla);
 	}
 
 	/**
@@ -90,7 +91,7 @@ public class RecursoPeriodo {
 	 *            A sigla do curso do periodo que o periodo pertence.
 	 * @param nomePeriodo
 	 *            Nome do periodo no formato "2013.1"
-	 *            
+	 * 
 	 * @return ToString do Objeto
 	 * 
 	 * @throws H2Exception
@@ -100,11 +101,11 @@ public class RecursoPeriodo {
 	public String getPeriodo(String nomePeriodo, String sigla)
 			throws H2Exception {
 
-		// Valida se a entrada da sigla.
-		if (H2Validation.validaCampos(sigla, "Atributo inválido"));
+		String[] params = { nomePeriodo, sigla };
 
-		// Valida se a entrada do nome do periodo.
-		if (H2Validation.validaCampos(nomePeriodo, "Atributo inválido"));
+		// Verifica se os parametros são nulos ou vazios
+		H2Validation.validaParametros(params,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// se existir, retorna um periodo com a nome e o curso iguais aos dos
 		// parâmetros no banco, se não existir o valor instância será nulo.
@@ -112,7 +113,8 @@ public class RecursoPeriodo {
 				.getPeriodoByName(nomePeriodo, sigla);
 
 		// Verifica se existe o periodo cadastrado
-		if (H2Validation.validaObjetosNaoNulos(periodo, "Periodo não cadastrado"));
+		H2Validation.validaObjetosNaoNulos(periodo,
+				H2ErrorMessages.PERIODONAOCADASTRADO.getValor());
 
 		// "ToString"
 		return periodo.toString();
