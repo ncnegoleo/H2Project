@@ -3,7 +3,6 @@ package br.com.padroesdeprojeto.data.dao;
 import java.util.ArrayList;
 
 import br.com.padroesdeprojeto.bean.Periodo;
-import br.com.padroesdeprojeto.bean.Professor;
 import br.com.padroesdeprojeto.bean.Turma;
 
 /**

@@ -106,13 +106,15 @@ public class DerbyTurma implements TurmaDaoIF {
 		String SQL_STATEMENT = "SELECT * FROM TURMA WHERE ID_TURMA = '" + id
 				+ "'";
 		Turma turma = null;
+		
+		// executa o sql no SGBD
 		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// procura e retorna o registro //
 		try {
 			while (resultSet.next()) {
-				new Turma(resultSet.getString(1), 
+				turma = new Turma(resultSet.getString(1), 
 						resultSet.getString(2), resultSet.getString(3),
 						resultSet.getString(4), resultSet.getString(5), 
 						resultSet.getString(6));

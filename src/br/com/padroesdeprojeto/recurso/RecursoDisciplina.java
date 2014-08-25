@@ -45,7 +45,7 @@ public class RecursoDisciplina {
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
-		// Valida se a entrada da periodo.
+		// Valida se a entrada da caraga horaria esta de acordo com as regras.
 		H2Validation.validaNumNaturais(cargaHoraria,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -68,8 +68,10 @@ public class RecursoDisciplina {
 		disciplina.setCargaHoraria(cargaHoraria);
 
 		// Verifica se a disciplina já exite no banco de dados
-		if (H2Validation.validaObjetosNulos(AbstractFactoryDao.createDisciplinaDaoIF()
-						.getDisciplinaBySigla(identificadorDisciplina,identificadorCurso),
+		if (H2Validation.validaObjetosNulos(
+				AbstractFactoryDao.createDisciplinaDaoIF()
+						.getDisciplinaBySigla(identificadorDisciplina,
+								identificadorCurso),
 				H2ErrorMessages.DISCIPLINAJACADASTRADA.getValor())) {
 
 			// Cadastra a nova disciplina
@@ -100,24 +102,25 @@ public class RecursoDisciplina {
 
 		// Verifica se o id do periodo informado está cadastrado no banco de
 		// dados
-		if (H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
+		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createCursoDaoIF().getCursoBySilga(idCurso),
-				H2ErrorMessages.CURSONAOCADASTRADO.getValor()))
-			;
+				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
 
 		// Valida se a entrada do id disciplina.
-		if (H2Validation.validaCampos(sigla,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()))
-			;
+		H2Validation.validaCampos(sigla,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
+		// Valida se a entrada o atributo disciplina.
+		H2Validation.validaCampos(atributo,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// Recupera uma disciolina do banco referente aos parametros passados
 		Disciplina disciplina = AbstractFactoryDao.createDisciplinaDaoIF()
 				.getDisciplinaBySigla(sigla, idCurso);
 
 		// Verifica se a disciplina está cadastrada no banco
-		if (H2Validation.validaObjetosNaoNulos(disciplina,
-				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor()))
-			;
+		H2Validation.validaObjetosNaoNulos(disciplina,
+				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 
 		// Verifica o atributo passado e altera o valor no objeto.
 		switch (atributo) {
@@ -128,6 +131,10 @@ public class RecursoDisciplina {
 			// Verifica o novo valor passad e converte para inteiro (se
 			// possivel)
 			int parsedValue = H2Validation.validaEConveteInt(novoValor,
+					H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+			// Valida se a entrada da caraga horaria esta de acordo com as
+			// regras.
+			H2Validation.validaNumNaturais(parsedValue,
 					H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 			disciplina.setCargaHoraria(parsedValue);
 			break;
@@ -157,28 +164,24 @@ public class RecursoDisciplina {
 			throws H2Exception {
 
 		// Valida se a entrada do id do curso.
-		if (H2Validation.validaCampos(idCurso,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()))
-			;
+		H2Validation.validaCampos(idCurso,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// Valida se a entrada do id da disciplina.
-		if (H2Validation.validaCampos(idDisciplina,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()))
-			;
+		H2Validation.validaCampos(idDisciplina,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// Verifica se o id do periodo informado está cadastrado no banco de
 		// dados
-		if (H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
+		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createCursoDaoIF().getCursoBySilga(idCurso),
-				H2ErrorMessages.CURSONAOCADASTRADO.getValor()))
-			;
+				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
 
 		// Verifica se a disciplina está cadastrada no banco
-		if (H2Validation.validaObjetosNaoNulos(
+		H2Validation.validaObjetosNaoNulos(
 				AbstractFactoryDao.createDisciplinaDaoIF()
 						.getDisciplinaBySigla(idDisciplina, idCurso),
-				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor()))
-			;
+				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 
 		AbstractFactoryDao.createDisciplinaDaoIF()
 				.deleta(idDisciplina, idCurso);
@@ -203,23 +206,20 @@ public class RecursoDisciplina {
 			throws H2Exception {
 
 		// Valida se a entrada do id do curso.
-		if (H2Validation.validaCampos(idCurso,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()))
-			;
+		H2Validation.validaCampos(idCurso,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// Valida se a entrada do id da disciplina.
-		if (H2Validation.validaCampos(idDisciplina,
-				H2ErrorMessages.ATRIBUTOINVALIDO.getValor()))
-			;
+		H2Validation.validaCampos(idDisciplina,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// Recupera uma disciplina do banco a partir dos parametros
 		Disciplina disciplina = AbstractFactoryDao.createDisciplinaDaoIF()
 				.getDisciplinaBySigla(idDisciplina, idCurso);
 
 		// Verifica se existe a dsciplina está cadastrada no banco
-		if (H2Validation.validaObjetosNaoNulos(disciplina,
-				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor()))
-			;
+		H2Validation.validaObjetosNaoNulos(disciplina,
+				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 
 		// "To String"
 		return disciplina.toString();
