@@ -1,11 +1,11 @@
-package br.com.padroesdeprojeto.data.dao.derby;
+package br.com.padroesdeprojeto.data.dao.hsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.padroesdeprojeto.bean.Professor;
 import br.com.padroesdeprojeto.data.dao.ProfessorDaoIF;
+import br.com.padroesdeprojeto.bean.Professor;
 
 /**
  * Esta classe faz a interação da entrada dos dados do professor com o banco de
@@ -14,7 +14,7 @@ import br.com.padroesdeprojeto.data.dao.ProfessorDaoIF;
  * @author Leonardo Soares.
  * 
  */
-public class DerbyProfessor implements ProfessorDaoIF {
+public class HSQLProfessor implements ProfessorDaoIF {
 
 	@Override
 	public void insere(Professor p) {
@@ -24,10 +24,10 @@ public class DerbyProfessor implements ProfessorDaoIF {
 				+ "'" + p.getMatricula() + "', " + "'" + p.getNome() + "')";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -38,24 +38,24 @@ public class DerbyProfessor implements ProfessorDaoIF {
 				+ "' " + "WHERE MATRICULA = '" + p.getMatricula() + "'";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
 	public void deleta(String matricula) {
 		
-		// sql para remover um professor
+		// sql para remove um professor
 		String SQL_STATEMENT = "DELETE FROM PROFESSOR WHERE MATRICULA = '"
 				+ matricula + "'";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class DerbyProfessor implements ProfessorDaoIF {
 		ArrayList<Professor> professores = new ArrayList<Professor>();
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// procura e retorna todos os registros //
@@ -86,7 +86,7 @@ public class DerbyProfessor implements ProfessorDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna os professores
 		return professores;
@@ -102,7 +102,7 @@ public class DerbyProfessor implements ProfessorDaoIF {
 		Professor professor = null;
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// Procura e retorna todos os registros //
@@ -120,7 +120,7 @@ public class DerbyProfessor implements ProfessorDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna o professor
 		return professor;

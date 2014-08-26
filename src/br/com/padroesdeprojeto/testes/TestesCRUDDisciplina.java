@@ -1,14 +1,14 @@
 package br.com.padroesdeprojeto.testes;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import br.com.padroesdeprojeto.bean.Disciplina;
-import br.com.padroesdeprojeto.data.dao.derby.ConexaoDB;
-import br.com.padroesdeprojeto.data.dao.derby.DerbyDisciplina;
+import br.com.padroesdeprojeto.data.dao.hsql.ConexaoHSQL;
+import br.com.padroesdeprojeto.data.dao.hsql.HSQLDisciplina;
 import br.com.padroesdeprojeto.exceptions.H2Exception;
 import br.com.padroesdeprojeto.fachada.Fachada;
 
@@ -19,8 +19,8 @@ public class TestesCRUDDisciplina {
 	@Before
 	public void setUp() throws Exception {
 		fachada = new Fachada();
-		ConexaoDB.getInstance().dropTables();
-		ConexaoDB.getInstance().createTables();
+		ConexaoHSQL.getInstance().dropTables();
+		ConexaoHSQL.getInstance().createTables();
 	}
 
 	@After
@@ -128,7 +128,7 @@ public class TestesCRUDDisciplina {
 		addCursoEPeriodo();
 		fachada.addDisciplinaAoPeriodo("PP", "Padrões de Projeto", 100, "ADS", "2013.1");
 		fachada.alteraDisciplina("ADS", "PP", "CargaHoraria", "200");
-		DerbyDisciplina dc = new DerbyDisciplina();
+		HSQLDisciplina dc = new HSQLDisciplina();
 		Disciplina d = dc.getDisciplinaBySigla("PP", "ADS");
 		assertEquals(200, d.getCargaHoraria());
 	}

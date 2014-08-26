@@ -1,11 +1,11 @@
-package br.com.padroesdeprojeto.data.dao.derby;
+package br.com.padroesdeprojeto.data.dao.hsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.padroesdeprojeto.bean.Disciplina;
 import br.com.padroesdeprojeto.data.dao.DisciplinaDaoIF;
+import br.com.padroesdeprojeto.bean.Disciplina;
 
 /**
  * Esta classe faz a interação da entrada dos dados da disciplina com o banco de
@@ -14,7 +14,7 @@ import br.com.padroesdeprojeto.data.dao.DisciplinaDaoIF;
  * @author Leonardo Soares.
  * 
  */
-public class DerbyDisciplina implements DisciplinaDaoIF {
+public class HSQLDisciplina implements DisciplinaDaoIF {
 
 	@Override
 	public void insere(Disciplina d, String siglaCurso, String idPeriodo) {
@@ -27,10 +27,10 @@ public class DerbyDisciplina implements DisciplinaDaoIF {
 				+ d.getCargaHoraria() + ")";
 
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -43,10 +43,10 @@ public class DerbyDisciplina implements DisciplinaDaoIF {
 				+ "' AND SIGLA_CURSO = '" + siglaCurso + "'";
 
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -57,10 +57,10 @@ public class DerbyDisciplina implements DisciplinaDaoIF {
 				+ id + "' AND SIGLA_CURSO = '" + siglaCurso + "'";
 
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class DerbyDisciplina implements DisciplinaDaoIF {
 		ArrayList<Disciplina> disciplinas = new ArrayList<Disciplina>();
 
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// procura e retorna todos os registros //
@@ -93,7 +93,7 @@ public class DerbyDisciplina implements DisciplinaDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna as disciplinas
 		return disciplinas;
@@ -109,7 +109,7 @@ public class DerbyDisciplina implements DisciplinaDaoIF {
 		Disciplina disciplina = null;
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// procura e retorna todos os registros //
@@ -128,7 +128,7 @@ public class DerbyDisciplina implements DisciplinaDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna as disciplinas
 		return disciplina;

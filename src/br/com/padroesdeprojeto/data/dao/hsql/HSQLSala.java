@@ -1,11 +1,11 @@
-package br.com.padroesdeprojeto.data.dao.derby;
+package br.com.padroesdeprojeto.data.dao.hsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.padroesdeprojeto.bean.Sala;
 import br.com.padroesdeprojeto.data.dao.SalaDaoIF;
+import br.com.padroesdeprojeto.bean.Sala;
 
 /**
  * Esta classe faz a interação da entrada dos dados da sala com o banco de
@@ -14,7 +14,7 @@ import br.com.padroesdeprojeto.data.dao.SalaDaoIF;
  * @author Leonardo Soares.
  * 
  */
-public class DerbySala implements SalaDaoIF {
+public class HSQLSala implements SalaDaoIF {
 
 	@Override
 	public void insere(Sala s) {
@@ -24,10 +24,10 @@ public class DerbySala implements SalaDaoIF {
 				+ s.getId() + "', '" + s.getBloco() + "')";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -38,10 +38,10 @@ public class DerbySala implements SalaDaoIF {
 				+ "' WHERE CODIGO = '" + s.getId() + "'";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -51,10 +51,10 @@ public class DerbySala implements SalaDaoIF {
 		String SQL_STATEMENT = "DELETE FROM SALA WHERE CODIGO = '" + id + "'";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class DerbySala implements SalaDaoIF {
 		ArrayList<Sala> salas = new ArrayList<Sala>();
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		/* Procura e retorna todos os registros */
@@ -85,7 +85,7 @@ public class DerbySala implements SalaDaoIF {
 		}
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna as salas
 		return salas;
@@ -101,7 +101,7 @@ public class DerbySala implements SalaDaoIF {
 		Sala sala = null;
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// Procura e retorna todos os registros //
@@ -118,7 +118,7 @@ public class DerbySala implements SalaDaoIF {
 		}
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna o professor
 		return sala;

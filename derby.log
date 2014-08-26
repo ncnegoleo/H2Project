@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Mon Aug 25 15:28:06 BRT 2014:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0148-0e6c-d3cc-0000032b5598 
-on database directory C:\Users\Nego Leo\git\H2Project\h2db with class loader sun.misc.Launcher$AppClassLoader@dad4feb 
+Tue Aug 26 00:44:26 BRT 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instance a816c00e-0148-106a-2cd5-00000343f2c0 
+on database directory C:\Users\Nego Leo\git\H2Project\h2db with class loader sun.misc.Launcher$AppClassLoader@5d593ce6 
 Loaded from file:/C:/Users/Nego%20Leo/git/H2Project/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_25-b17

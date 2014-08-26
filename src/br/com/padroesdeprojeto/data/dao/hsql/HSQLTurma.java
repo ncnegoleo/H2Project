@@ -1,11 +1,11 @@
-package br.com.padroesdeprojeto.data.dao.derby;
+package br.com.padroesdeprojeto.data.dao.hsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.padroesdeprojeto.bean.Turma;
 import br.com.padroesdeprojeto.data.dao.TurmaDaoIF;
+import br.com.padroesdeprojeto.bean.Turma;
 
 /**
  * Esta classe faz a interação da entrada dos dados da sala com o banco de
@@ -14,9 +14,8 @@ import br.com.padroesdeprojeto.data.dao.TurmaDaoIF;
  * @author Leonardo Soares.
  * 
  */
-public class DerbyTurma implements TurmaDaoIF {
+public class HSQLTurma implements TurmaDaoIF{
 
-	@Override
 	public void insere(Turma t) {
 		
 		// sql para adicionar uma nova turma.
@@ -27,10 +26,10 @@ public class DerbyTurma implements TurmaDaoIF {
 				+ t.getIdSala() + "','" + t.getIdPeri() + "')";
 		
 		// executa o sql no SGBD.
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão.
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -44,10 +43,10 @@ public class DerbyTurma implements TurmaDaoIF {
 		+ " WHERE ID_TURMA = '" + id +"'";
 		
 		// executa o sql no SGBD.
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão.
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -57,10 +56,10 @@ public class DerbyTurma implements TurmaDaoIF {
 		String SQL_STATEMENT = "DELETE FROM TURMA WHERE ID_TURMA = '" + id + "'";
 		
 		// executa o sql no SGBD.
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão.
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -72,7 +71,7 @@ public class DerbyTurma implements TurmaDaoIF {
 		ArrayList<Turma> turmas = new ArrayList<Turma>();
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// procura e retorna todos os registros //
@@ -93,7 +92,7 @@ public class DerbyTurma implements TurmaDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna as turmas
 		return turmas;
@@ -108,7 +107,7 @@ public class DerbyTurma implements TurmaDaoIF {
 		Turma turma = null;
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// procura e retorna o registro //
@@ -127,7 +126,7 @@ public class DerbyTurma implements TurmaDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna a turma
 		return turma;

@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.padroesdeprojeto.data.dao.derby.ConexaoDB;
+import br.com.padroesdeprojeto.data.dao.hsql.ConexaoHSQL;
 import br.com.padroesdeprojeto.exceptions.H2Exception;
 import br.com.padroesdeprojeto.fachada.Fachada;
 import br.com.padroesdeprojeto.fachada.FachadaIF;
@@ -18,8 +18,8 @@ public class TestesCRUDProfessor {
 	@Before
 	public void setUp() throws Exception {
 		fachada = new Fachada();
-		ConexaoDB.getInstance().dropTables();
-		ConexaoDB.getInstance().createTables();
+		ConexaoHSQL.getInstance().dropTables();
+		ConexaoHSQL.getInstance().createTables();
 	}
 
 	@After

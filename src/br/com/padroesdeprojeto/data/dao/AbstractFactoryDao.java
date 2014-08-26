@@ -6,12 +6,12 @@ import br.com.padroesdeprojeto.bean.Periodo;
 import br.com.padroesdeprojeto.bean.Professor;
 import br.com.padroesdeprojeto.bean.Sala;
 import br.com.padroesdeprojeto.bean.Turma;
-import br.com.padroesdeprojeto.data.dao.derby.DerbyCurso;
-import br.com.padroesdeprojeto.data.dao.derby.DerbyDisciplina;
-import br.com.padroesdeprojeto.data.dao.derby.DerbyPeriodo;
-import br.com.padroesdeprojeto.data.dao.derby.DerbyProfessor;
-import br.com.padroesdeprojeto.data.dao.derby.DerbySala;
-import br.com.padroesdeprojeto.data.dao.derby.DerbyTurma;
+import br.com.padroesdeprojeto.data.dao.hsql.HSQLCurso;
+import br.com.padroesdeprojeto.data.dao.hsql.HSQLDisciplina;
+import br.com.padroesdeprojeto.data.dao.hsql.HSQLPeriodo;
+import br.com.padroesdeprojeto.data.dao.hsql.HSQLProfessor;
+import br.com.padroesdeprojeto.data.dao.hsql.HSQLSala;
+import br.com.padroesdeprojeto.data.dao.hsql.HSQLTurma;
 
 /**
  * Esta classe serve para a criação de objetos e para a manipulação dos dados dos
@@ -32,7 +32,7 @@ public class AbstractFactoryDao {
 	 * @see ProfessorDaoIF
 	 */
 	public static ProfessorDaoIF createProfessorDaoIF() {
-		return new DerbyProfessor();
+		return new HSQLProfessor();
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class AbstractFactoryDao {
 	 * @see CursoDaoIF
 	 */
 	public static CursoDaoIF createCursoDaoIF() {
-		return new DerbyCurso();
+		return new HSQLCurso();
 	}
 	
 	/**
@@ -58,7 +58,7 @@ public class AbstractFactoryDao {
 	 * @see SalaDaoIF
 	 */
 	public static SalaDaoIF createSalaDaoIF() {
-		return new DerbySala();
+		return new HSQLSala();
 	}
 	
 	/**
@@ -71,7 +71,7 @@ public class AbstractFactoryDao {
 	 * @see PeriodoDaoIF
 	 */
 	public static PeriodoDaoIF createPeriodoDaoIF() {
-		return new DerbyPeriodo();
+		return new HSQLPeriodo();
 	}
 
 	
@@ -85,7 +85,7 @@ public class AbstractFactoryDao {
 	 * @see DisciplinaDaoIF
 	 */
 	public static DisciplinaDaoIF createDisciplinaDaoIF() {
-		return new DerbyDisciplina();
+		return new HSQLDisciplina();
 	}
 	
 	/**
@@ -98,6 +98,6 @@ public class AbstractFactoryDao {
 	 * @see TurmaDaoIF
 	 */
 	public static TurmaDaoIF createTurmaDaoIF() {
-		return new DerbyTurma();
+		return new HSQLTurma();
 	}
 }

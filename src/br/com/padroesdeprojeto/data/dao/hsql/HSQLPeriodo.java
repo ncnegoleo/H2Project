@@ -1,11 +1,11 @@
-package br.com.padroesdeprojeto.data.dao.derby;
+package br.com.padroesdeprojeto.data.dao.hsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.padroesdeprojeto.bean.Periodo;
 import br.com.padroesdeprojeto.data.dao.PeriodoDaoIF;
+import br.com.padroesdeprojeto.bean.Periodo;
 
 /**
  * Esta classe faz a interação da entrada dos dados do periodo com o banco de
@@ -14,7 +14,7 @@ import br.com.padroesdeprojeto.data.dao.PeriodoDaoIF;
  * @author Leonardo Soares.
  * 
  */
-public class DerbyPeriodo implements PeriodoDaoIF {
+public class HSQLPeriodo implements PeriodoDaoIF {
 
 	@Override
 	public void insere(Periodo p, String siglaCurso) {
@@ -24,10 +24,10 @@ public class DerbyPeriodo implements PeriodoDaoIF {
 				+ "'" + p.getNomePeriodo() + "', " + "'" + siglaCurso + "')";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -38,10 +38,10 @@ public class DerbyPeriodo implements PeriodoDaoIF {
 				+ "' AND SIGLA_CURSO = '" + siglaCurso + "'";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 
 	}
 
@@ -54,7 +54,7 @@ public class DerbyPeriodo implements PeriodoDaoIF {
 		ArrayList<Periodo> periodos = new ArrayList<Periodo>();
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// Procura e retorna todos os registros //
@@ -73,7 +73,7 @@ public class DerbyPeriodo implements PeriodoDaoIF {
 		}
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna os professores
 		return periodos;
@@ -89,7 +89,7 @@ public class DerbyPeriodo implements PeriodoDaoIF {
 		Periodo periodo = null;
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// Procura e retorna todos os registros //
@@ -107,7 +107,7 @@ public class DerbyPeriodo implements PeriodoDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna o professor
 		return periodo;

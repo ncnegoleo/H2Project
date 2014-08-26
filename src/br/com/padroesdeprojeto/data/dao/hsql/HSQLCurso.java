@@ -1,11 +1,11 @@
-package br.com.padroesdeprojeto.data.dao.derby;
+package br.com.padroesdeprojeto.data.dao.hsql;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import br.com.padroesdeprojeto.bean.Curso;
 import br.com.padroesdeprojeto.data.dao.CursoDaoIF;
+import br.com.padroesdeprojeto.bean.Curso;
 
 /**
  * Esta classe faz a interação da entrada dos dados do curso com o banco de
@@ -14,7 +14,7 @@ import br.com.padroesdeprojeto.data.dao.CursoDaoIF;
  * @author Leonardo Soares.
  * 
  */
-public class DerbyCurso implements CursoDaoIF {
+public class HSQLCurso implements CursoDaoIF {
 
 	@Override
 	public void insere(Curso c) {
@@ -24,10 +24,10 @@ public class DerbyCurso implements CursoDaoIF {
 				+ c.getId() + "', " + "'" + c.getNome() + "')";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -38,10 +38,10 @@ public class DerbyCurso implements CursoDaoIF {
 				+ "', NOME = '" + c.getNome() + "' WHERE SIGLA = '" + c.getId() + "'";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -51,10 +51,10 @@ public class DerbyCurso implements CursoDaoIF {
 		String SQL_STATEMENT = "DELETE FROM CURSO WHERE SIGLA = '" + id + "'";
 		
 		// executa o sql no SGBD
-		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);
+		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class DerbyCurso implements CursoDaoIF {
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
 		
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// procura e retorna todos os registros //
@@ -86,7 +86,7 @@ public class DerbyCurso implements CursoDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna os cursos
 		return cursos;
@@ -102,7 +102,7 @@ public class DerbyCurso implements CursoDaoIF {
 		Curso curso = null;
 
 		// executa o sql no SGBD
-		ResultSet resultSet = ConexaoDB.getInstance().getResultSet(
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
 				SQL_STATEMENT);
 
 		// Procura e retorna todos os registros //
@@ -120,7 +120,7 @@ public class DerbyCurso implements CursoDaoIF {
 		}
 
 		// fecha a conexão
-		ConexaoDB.getInstance().closeConetion();
+		ConexaoHSQL.getInstance().closeConetion();
 
 		// retorna o curso
 		return curso;
