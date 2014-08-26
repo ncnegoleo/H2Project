@@ -133,8 +133,7 @@ public class Fachada implements FachadaIF {
 
 	@Override
 	public void removerTurma(String idTurma) throws H2Exception {
-		// TODO Auto-generated method stub
-
+		AbstractFactoryRecurso.createRecursoTurma().removeTurma(idTurma);
 	}
 
 	@Override

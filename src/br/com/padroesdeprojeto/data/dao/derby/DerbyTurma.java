@@ -54,7 +54,7 @@ public class DerbyTurma implements TurmaDaoIF {
 	public void deleta(String id) {
 		
 		// sql para deletar uma turma.
-		String SQL_STATEMENT = "DELETE FROM TURMA WHERE ID_TURMA = " + id;
+		String SQL_STATEMENT = "DELETE FROM TURMA WHERE ID_TURMA = '" + id + "'";
 		
 		// executa o sql no SGBD.
 		ConexaoDB.getInstance().executeSQLStatement(SQL_STATEMENT);

@@ -1,5 +1,6 @@
 package br.com.padroesdeprojeto.recurso;
 
+import br.com.padroesdeprojeto.bean.Disciplina;
 import br.com.padroesdeprojeto.bean.Turma;
 import br.com.padroesdeprojeto.data.dao.AbstractFactoryDao;
 import br.com.padroesdeprojeto.exceptions.H2Exception;
@@ -94,7 +95,35 @@ public class RecursoTurma {
 			AbstractFactoryDao.createTurmaDaoIF().insere(turma);
 		}
 	}
+	
+	
+	/**
+	 * Este método como controlador para a remoção de turmas na base de
+	 * dados
+	 * 
+	 * @param idTurma
+	 *            O id da Turma
+	 * 
+	 * @throws H2Exception
+	 *             Lançada caso algum atributo seja nulo ou vazio, ou não exista
+	 *             o id cadastrado na base de dados
+	 */
+	public void removeTurma(String idTurma) throws H2Exception {
 
+		// valida se a entrada do id esta de acordo com as regras.
+		H2Validation.validaCampos(idTurma,
+				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
+		// Verfica se a turma existe na base de dados
+		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
+				.createTurmaDaoIF().getTurmaById(idTurma),
+				H2ErrorMessages.TURMANAOCADASTRADA.getValor());
+
+		// Remove a turma da base de dados
+		AbstractFactoryDao.createTurmaDaoIF().deleta(idTurma);
+	}
+	
+	
 	public String getTurma(String idTurma) throws H2Exception {
 
 		// valida se a entrada do id esta de acordo com as regras.
@@ -113,5 +142,4 @@ public class RecursoTurma {
 		// "ToString"
 		return turma.toString();
 	}
-
 }
