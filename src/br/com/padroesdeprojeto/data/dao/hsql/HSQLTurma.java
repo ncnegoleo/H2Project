@@ -16,6 +16,7 @@ import br.com.padroesdeprojeto.bean.Turma;
  */
 public class HSQLTurma implements TurmaDaoIF{
 
+	@Override
 	public void insere(Turma t) {
 		
 		// sql para adicionar uma nova turma.
@@ -36,11 +37,11 @@ public class HSQLTurma implements TurmaDaoIF{
 	public void altera(Turma t, String id) {
 		
 		// sql para alterar uma nova turma.
-		String SQL_STATEMENT = "UPDATE TURMA SET ID_PROF = " 
-		+ t.getIdProf() + ", ID_DISC = " + t.getIdDisc() 
-		+ ", ID_SALA = " + t.getIdSala() 
-		+ ", ID_PERIODO = " + t.getIdPeri() 
-		+ " WHERE ID_TURMA = '" + id +"'";
+		String SQL_STATEMENT = "UPDATE TURMA SET ID_PROF = '" 
+		+ t.getIdProf() + "', ID_DISC = '" + t.getIdDisc() 
+		+ "', ID_SALA = '" + t.getIdSala() 
+		+ "', ID_PERIODO = '" + t.getIdPeri() 
+		+ "' WHERE ID_TURMA = '" + id +"'";
 		
 		// executa o sql no SGBD.
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
@@ -131,5 +132,4 @@ public class HSQLTurma implements TurmaDaoIF{
 		// retorna a turma
 		return turma;
 	}
-
 }

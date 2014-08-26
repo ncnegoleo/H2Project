@@ -127,8 +127,7 @@ public class Fachada implements FachadaIF {
 	@Override
 	public void alteraTurma(String idTurma, String campo, String novoValor)
 			throws H2Exception {
-		// TODO Auto-generated method stub
-
+		AbstractFactoryRecurso.createRecursoTurma().alteraTurma(idTurma, campo, novoValor);
 	}
 
 	@Override

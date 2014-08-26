@@ -14,6 +14,10 @@ import br.com.padroesdeprojeto.validation.H2Validation;
  */
 public class RecursoDisciplina {
 
+	private final String NOME = "Nome";
+	private final String CARGAH = "CargaHoraria";
+	private final String PERIODO = "Periodo";
+
 	/**
 	 * Este método serve controlador para a adição de novas disciplinas no
 	 * sistema.
@@ -124,11 +128,11 @@ public class RecursoDisciplina {
 
 		// Verifica o atributo passado e altera o valor no objeto.
 		switch (atributo) {
-		case "Nome":
+		case NOME:
 			disciplina.setNomeDaDisciplina(novoValor);
 			break;
-		case "CargaHoraria":
-			// Verifica o novo valor passad e converte para inteiro (se
+		case CARGAH:
+			// Verifica o novo valor passado e converte para inteiro (se
 			// possivel)
 			int parsedValue = H2Validation.validaEConveteInt(novoValor,
 					H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
@@ -137,6 +141,14 @@ public class RecursoDisciplina {
 			H2Validation.validaNumNaturais(parsedValue,
 					H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 			disciplina.setCargaHoraria(parsedValue);
+			break;
+		case PERIODO:
+			// Verifica se a disciplina está cadastrada no banco
+			H2Validation.validaObjetosNaoNulos(
+					AbstractFactoryDao.createPeriodoDaoIF().getPeriodoByName(
+							novoValor, disciplina.getSiglaCurso()),
+					H2ErrorMessages.PERIODONAOCADASTRADO.getValor());
+			disciplina.setPeriodo(novoValor);
 			break;
 		default:
 			throw new H2Exception(H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
@@ -224,5 +236,4 @@ public class RecursoDisciplina {
 		// "To String"
 		return disciplina.toString();
 	}
-
 }
