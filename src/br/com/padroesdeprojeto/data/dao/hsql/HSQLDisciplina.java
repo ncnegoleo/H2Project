@@ -39,8 +39,9 @@ public class HSQLDisciplina implements DisciplinaDaoIF {
 		// sql para alterar uma disciplina
 		String SQL_STATEMENT = "UPDATE DISCIPLINA SET NOME = '"
 				+ d.getNomeDaDisciplina() + "' " + ", CARG_HORARIA = "
-				+ d.getCargaHoraria() + " WHERE SIGLA_DISCIPLINA = '" + id
-				+ "' AND SIGLA_CURSO = '" + siglaCurso + "'";
+				+ d.getCargaHoraria() + ", PERIODO= '" + d.getPeriodo() 
+				+ "' WHERE SIGLA_DISCIPLINA = '" + id + "' AND SIGLA_CURSO = '" 
+				+ siglaCurso + "'";
 
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);

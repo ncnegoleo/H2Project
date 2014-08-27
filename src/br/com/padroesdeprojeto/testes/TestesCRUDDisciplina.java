@@ -133,6 +133,23 @@ public class TestesCRUDDisciplina {
 		assertEquals(200, d.getCargaHoraria());
 	}
 	
+	@Test
+	public void testAlteraPeriodoDisciplina() throws H2Exception {
+		addCursoEPeriodo();
+		fachada.addDisciplinaAoPeriodo("PP", "Padrões de Projeto", 100, "ADS", "2013.1");
+		fachada.alteraDisciplina("ADS", "PP", "Periodo", "2013.2");
+		HSQLDisciplina dc = new HSQLDisciplina();
+		Disciplina d = dc.getDisciplinaBySigla("PP", "ADS");
+		assertEquals("2013.2", d.getPeriodo());
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraPeriodoInexistenteDisciplina() throws H2Exception {
+		addCursoEPeriodo();
+		fachada.addDisciplinaAoPeriodo("PP", "Padrões de Projeto", 100, "ADS", "2013.1");
+		fachada.alteraDisciplina("ADS", "PP", "Periodo", "2014.1");
+	}
+	
 	@Test(expected = H2Exception.class)
 	public void testAlteraDisciplinaCursoVazio() throws H2Exception {
 		addCursoEPeriodo();
@@ -262,6 +279,7 @@ public class TestesCRUDDisciplina {
 	private void addCursoEPeriodo() throws H2Exception {
 		fachada.addCurso("ADS", "Analise e Desenvolvimento de Sistemas");
 		fachada.addPeriodo("2013.1", "ADS");
+		fachada.addPeriodo("2013.2", "ADS");
 	}
 
 }

@@ -89,6 +89,16 @@ public class ConexaoHSQL {
 			+ "CONSTRAINT peri_fk_turma FOREIGN KEY (ID_PERIODO) " // FK PERIODO
 			+ "REFERENCES PERIODO(ID_PERIODO) ON DELETE CASCADE)";
 	
+	/* sql da tabela horario */
+	private final String TABELA_HORARIO = "HORARIO ("
+			+ "ID_HORARIO INT IDENTITY, "
+			+ "ID_TURMA_HOR VARCHAR(30) NOT NULL,"
+			+ "DIA_SEMANA VARCHAR(50) NOT NULL, "
+			+ "H_INICIO INT NOT NULL, "
+			+ "H_FIM INT NOT NULL, "
+			+ "CONSTRAINT turma_fk_horario FOREIGN KEY (ID_TURMA_HOR) " // FK CURSO
+			+ "REFERENCES TURMA(ID_TURMA) ON DELETE CASCADE)";
+	
 	/* método construtor que cria uma conexão e as tabelas */
 	private ConexaoHSQL() {
 		try {
@@ -126,6 +136,7 @@ public class ConexaoHSQL {
 			conn.createStatement().execute("CREATE TABLE IF NOT EXISTS " + TABELA_PERIODO);
 			conn.createStatement().execute("CREATE TABLE IF NOT EXISTS " + TABELA_DISCIPLINA);
 			conn.createStatement().execute("CREATE TABLE IF NOT EXISTS " + TABELA_TURMA);
+			conn.createStatement().execute("CREATE TABLE IF NOT EXISTS " + TABELA_HORARIO);
 			// Add more Tables
 		} catch (SQLException e) {
 			System.err.print("Ocorreu um erro na criação das tabelas: " + e);
@@ -137,6 +148,7 @@ public class ConexaoHSQL {
 	 */
 	public void dropTables() {
 		try {
+			conn.createStatement().execute("DROP TABLE IF EXISTS HORARIO");
 			conn.createStatement().execute("DROP TABLE IF EXISTS TURMA");
 			conn.createStatement().execute("DROP TABLE IF EXISTS DISCIPLINA");
 			conn.createStatement().execute("DROP TABLE IF EXISTS PERIODO");

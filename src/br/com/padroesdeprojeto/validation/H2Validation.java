@@ -11,15 +11,6 @@ import br.com.padroesdeprojeto.exceptions.H2Exception;
 
 public class H2Validation {
 
-	public static boolean validaCamposRegex(String camp, String regex,
-			String msg) throws H2Exception {
-		if (H2Validation.validaCamposRegex(camp, regex)) {
-			return true;
-		} else {
-			throw new H2Exception(msg);
-		}
-	}
-
 	public static boolean validaNumNaturais(int camp, String msg)
 			throws H2Exception {
 		if (camp > 0) {
@@ -75,32 +66,10 @@ public class H2Validation {
 		}
 	}
 
-	public static boolean validaMaiorQueZero(int entrada, String msg)
-			throws H2Exception {
-		if (entrada > 0) {
-			return true;
-		} else {
-			throw new H2Exception(msg);
-		}
-	}
-
 	private static boolean validaNuloVazio(String entrada) {
 		if (!("".equals(entrada)) && (entrada != null))
 			return true;
 		return false;
-	}
-
-	private static boolean validaCamposRegex(String camp, String regex) {
-		if (validaNuloVazio(camp)) {
-			if (camp.matches(regex)) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-
 	}
 
 }

@@ -143,6 +143,36 @@ public class TestesCRUDTurma {
 		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2015.2");
 	}
 	
+	// Altera vai dar muito trabalho.. Fazer depois
+	
+	@Test
+	public void testRemoveTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.removerTurma("TPPADS");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testRemoveTurmaIdVazio() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.removerTurma("");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testRemoveTurmaIdNulo() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.removerTurma(null);
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testRemoveTurmaInexistente() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.removerTurma("TDBADS");
+	}
+	
 	private void addObjetosPTurma() throws H2Exception {
 		fachada.addCurso("ADS", "Analise e Desenvolvimento de Sistemas");
 		fachada.addProfessor("001", "Mirna");
