@@ -2,9 +2,9 @@ package br.com.padroesdeprojeto.recurso;
 
 import br.com.padroesdeprojeto.bean.Turma;
 import br.com.padroesdeprojeto.data.dao.AbstractFactoryDao;
-import br.com.padroesdeprojeto.exceptions.H2Exception;
 import br.com.padroesdeprojeto.validation.H2ErrorMessages;
 import br.com.padroesdeprojeto.validation.H2Validation;
+import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
  * Esta classe serve para a manipulação dos recursos de turma.
@@ -61,16 +61,13 @@ public class RecursoTurma {
 		// Verifica se existe o professor cadastrado
 		H2Validation.validaObjetosNaoNulos(
 				AbstractFactoryDao.createProfessorDaoIF()
-						.getProfessorByMatricula(identificadorProfessor),
+				.getProfessorByMatricula(identificadorProfessor),
 				H2ErrorMessages.PROFESSORNAOCADASTRADO.getValor());
 
 		// Verifica se existe o disciplina cadastrada
-		H2Validation
-				.validaObjetosNaoNulos(
-						AbstractFactoryDao.createDisciplinaDaoIF()
-								.getDisciplinaBySigla(identificadorDisciplina,
-										idCurso),
-						H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
+		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao.createDisciplinaDaoIF()
+				.getDisciplinaBySigla(identificadorDisciplina,idCurso),
+				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 
 		// Verifica se existe a sala cadastrada
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao.createSalaDaoIF()
@@ -146,7 +143,7 @@ public class RecursoTurma {
 			// Verifica se o professor está cadastrada no banco
 			H2Validation.validaObjetosNaoNulos(
 					AbstractFactoryDao.createDisciplinaDaoIF()
-							.getDisciplinaBySigla(novoValor, turma.getIdCurso()),
+					.getDisciplinaBySigla(novoValor, turma.getIdCurso()),
 					H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 			turma.setIdDisc(novoValor);
 			break;
@@ -161,7 +158,7 @@ public class RecursoTurma {
 			// Verifica se o professor está cadastrada no banco
 			H2Validation.validaObjetosNaoNulos(
 					AbstractFactoryDao.createPeriodoDaoIF().getPeriodoByName(
-							novoValor, turma.getIdCurso()),
+					novoValor, turma.getIdCurso()),
 					H2ErrorMessages.PERIODONAOCADASTRADO.getValor());
 			turma.setIdPeri(novoValor);
 			break;

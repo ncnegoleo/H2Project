@@ -8,6 +8,7 @@ import br.com.padroesdeprojeto.bean.Sala;
 import br.com.padroesdeprojeto.bean.Turma;
 import br.com.padroesdeprojeto.data.dao.hsql.HSQLCurso;
 import br.com.padroesdeprojeto.data.dao.hsql.HSQLDisciplina;
+import br.com.padroesdeprojeto.data.dao.hsql.HSQLHorario;
 import br.com.padroesdeprojeto.data.dao.hsql.HSQLPeriodo;
 import br.com.padroesdeprojeto.data.dao.hsql.HSQLProfessor;
 import br.com.padroesdeprojeto.data.dao.hsql.HSQLSala;
@@ -99,5 +100,18 @@ public class AbstractFactoryDao {
 	 */
 	public static TurmaDaoIF createTurmaDaoIF() {
 		return new HSQLTurma();
+	}
+	
+	/**
+	 * Este método retorna uma instância de DerbyTurmapara que seja possível
+	 * manipular seus métodos staticamente.
+	 * 
+	 * @return Um novo objeto {@link Horario}.
+	 * 
+	 * @see Horario
+	 * @see HorarioDaoIF
+	 */
+	public static HSQLHorario createHorarioDaoIF() {
+		return new HSQLHorario();
 	}
 }

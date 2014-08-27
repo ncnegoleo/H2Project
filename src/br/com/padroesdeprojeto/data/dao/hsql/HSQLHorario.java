@@ -42,11 +42,46 @@ public class HSQLHorario implements HorarioDaoIF {
 	}
 
 	@Override
-	public ArrayList<Horario> getAllHorarios(String id) {
+	public ArrayList<Horario> getAllHorariosByTurma(String id) {
 
 		// sql para selecionar todos os horarios da turma
 		String SQL_SELECT_STATEMENT = "SELECT * FROM HORARIO WHERE ID_TURMA_HOR = '"
 				+ id + "'";
+
+		ArrayList<Horario> horarios = new ArrayList<Horario>();
+
+		// executa o sql no SGBD
+		ResultSet resultSet = ConexaoHSQL.getInstance().getResultSet(
+				SQL_SELECT_STATEMENT);
+
+		// procura e retorna todos os registros //
+		try {
+			while (resultSet.next()) {
+
+				// atribui os registros encontrados em objeto que adicionados
+				// numa lista
+				horarios.add(new Horario(resultSet.getString(2), resultSet
+						.getString(3), resultSet.getInt(4), resultSet.getInt(5)));
+			}
+
+			// fecha o resultSet
+			resultSet.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		// fecha a conexÃ£o
+		ConexaoHSQL.getInstance().closeConetion();
+
+		// retorna os horarios
+		return horarios;
+	}
+
+	@Override
+	public ArrayList<Horario> getAllHorarios() {
+		
+		// sql para selecionar todos os horarios da turma
+		String SQL_SELECT_STATEMENT = "SELECT * FROM HORARIO";
 
 		ArrayList<Horario> horarios = new ArrayList<Horario>();
 

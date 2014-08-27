@@ -2,9 +2,9 @@ package br.com.padroesdeprojeto.recurso;
 
 import br.com.padroesdeprojeto.bean.Sala;
 import br.com.padroesdeprojeto.data.dao.AbstractFactoryDao;
-import br.com.padroesdeprojeto.exceptions.H2Exception;
 import br.com.padroesdeprojeto.validation.H2ErrorMessages;
 import br.com.padroesdeprojeto.validation.H2Validation;
+import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
  * Esta classe serve para a manipulação dos recursos de sala.

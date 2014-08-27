@@ -9,8 +9,8 @@ import org.junit.Test;
 import br.com.padroesdeprojeto.bean.Disciplina;
 import br.com.padroesdeprojeto.data.dao.hsql.ConexaoHSQL;
 import br.com.padroesdeprojeto.data.dao.hsql.HSQLDisciplina;
-import br.com.padroesdeprojeto.exceptions.H2Exception;
 import br.com.padroesdeprojeto.fachada.Fachada;
+import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 public class TestesCRUDDisciplina {
 

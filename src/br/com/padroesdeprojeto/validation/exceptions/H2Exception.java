@@ -1,4 +1,4 @@
-package br.com.padroesdeprojeto.exceptions;
+package br.com.padroesdeprojeto.validation.exceptions;
 
 /**
  * Esta classe lança as exceções das interações do usuario com o sistema

@@ -1,6 +1,6 @@
 package br.com.padroesdeprojeto.bean;
 
-import br.com.padroesdeprojeto.exceptions.H2Exception;
+import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
  * Esta classe serve como modelo para a gravação dos objetos Professor na base de

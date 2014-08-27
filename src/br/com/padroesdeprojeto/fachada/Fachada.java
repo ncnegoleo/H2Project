@@ -1,7 +1,7 @@
 package br.com.padroesdeprojeto.fachada;
 
-import br.com.padroesdeprojeto.exceptions.H2Exception;
 import br.com.padroesdeprojeto.recurso.AbstractFactoryRecurso;
+import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
  * Esta classe controla todas as ações de cadastro, alteração, deleção e

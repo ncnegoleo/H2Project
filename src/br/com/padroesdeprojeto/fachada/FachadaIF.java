@@ -1,6 +1,6 @@
 package br.com.padroesdeprojeto.fachada;
 
-import br.com.padroesdeprojeto.exceptions.H2Exception;
+import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
  * Esta interface representa as funcionalidades do sistema H2. O H2 é um sistema
