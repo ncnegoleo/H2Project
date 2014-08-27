@@ -31,9 +31,17 @@ public interface HorarioDaoIF {
 	 *            O id da turma.
 	 */
 	public ArrayList<Horario> getAllHorariosByTurma(String id);
-	
+
 	/**
-	 * Recupera todos os horarios.
+	 * 
+	 * @return
 	 */
 	public ArrayList<Horario> getAllHorarios();
+
+	/**
+	 * 
+	 * @param h
+	 * @return
+	 */
+	public Horario getHorarioByHIntevalo(Horario h, int hora);
 }

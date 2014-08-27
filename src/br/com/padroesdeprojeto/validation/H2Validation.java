@@ -48,7 +48,7 @@ public class H2Validation {
 		throw new H2Exception(msg);
 	}
 
-	public static boolean validaObjetos(Object entrada) throws H2Exception {
+	public static boolean validaObjetos(Object entrada) {
 		if (entrada != null)
 			return true;
 		return false;
@@ -77,8 +77,17 @@ public class H2Validation {
 	}
 	
 	public static void validaHoras(int[] horas, String msg) throws H2Exception {
+		
+		validaEntradaHora(horas[0], horas[1], msg);
+		
 		for (int h : horas) {
 			validaHora(h, msg);
+		}
+	}
+
+	private static void validaEntradaHora(int i, int j, String msg) throws H2Exception {
+		if(j <= i) {
+			throw new H2Exception(msg);
 		}
 	}
 
@@ -92,5 +101,14 @@ public class H2Validation {
 			}
 		}
 		throw new H2Exception(msg);
+	}
+	
+	public static boolean validaConflitoHorario(int h1Inicio, int h1Fim, int h2Inicio, int h2Fim) {
+		for (int i = h2Inicio; i <= h2Fim; i++) {
+			if(i >= h1Inicio && i <= h1Fim) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

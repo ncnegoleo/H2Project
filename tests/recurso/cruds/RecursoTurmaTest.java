@@ -1,4 +1,5 @@
-package br.com.padroesdeprojeto.testes;
+package recurso.cruds;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,7 +11,7 @@ import br.com.padroesdeprojeto.data.dao.hsql.ConexaoHSQL;
 import br.com.padroesdeprojeto.fachada.Fachada;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
-public class TestesCRUDTurma {
+public class RecursoTurmaTest {
 
 	Fachada fachada;
 	

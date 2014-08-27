@@ -1,4 +1,5 @@
-package br.com.padroesdeprojeto.testes;
+package recurso.cruds;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,7 +13,7 @@ import br.com.padroesdeprojeto.data.dao.hsql.HSQLDisciplina;
 import br.com.padroesdeprojeto.fachada.Fachada;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
-public class TestesCRUDDisciplina {
+public class RecursoDisciplinaTest {
 
 	Fachada fachada;
 

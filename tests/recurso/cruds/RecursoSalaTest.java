@@ -1,4 +1,5 @@
-package br.com.padroesdeprojeto.testes;
+package recurso.cruds;
+
 
 import org.junit.After;
 import org.junit.Before;
@@ -8,7 +9,7 @@ import br.com.padroesdeprojeto.data.dao.hsql.ConexaoHSQL;
 import br.com.padroesdeprojeto.fachada.Fachada;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
-public class TestesCRUDSala {
+public class RecursoSalaTest {
 
 	Fachada fachada;
 	
