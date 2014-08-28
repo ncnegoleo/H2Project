@@ -27,26 +27,36 @@ public class RecursoHorario {
 		int[] horas = { horaInicio, horafim };
 		String[] params = { idTurma, diaDaSemana };
 
+		// Verifica os parametros String passados como parametro.
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
+		// Verifica as horas passadas como parametro.
 		H2Validation.validaHoras(horas,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
+		// Verifica os dias da semana (Exemplo: Seguna ou Terça ou Quarta...)
 		H2Validation.validaDiaSemana(diaDaSemana,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
+		// Verifica se a turma passada como parametro está realmente cadastrada.
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createTurmaDaoIF().getTurmaById(idTurma),
 				H2ErrorMessages.TURMANAOCADASTRADA.getValor());
 
+		// Sets para o novo horario.
 		horario.setIdTurma(idTurma);
 		horario.setDiaSemana(diaDaSemana);
 		horario.setHoraInicio(horaInicio);
 		horario.setHoraFim(horafim);
 
+		// Verifica o horario passado e compara como os outros do banco.
 		String msgHorario = validaHorario(horario);
 
+		// aloca a turma no horario
 		AbstractFactoryDao.createHorarioDaoIF().aloca(horario);
 
+		// retorna a mesagem que pode ser ok ou choques de horario.
 		return msgHorario;
 	}
 
@@ -59,38 +69,90 @@ public class RecursoHorario {
 	 * @return
 	 * @throws H2Exception
 	 */
-	public String desalocaTurmaDoHorario(String idTurma, String diaDaSemana,
+	public String desaloca(String idTurma, String diaDaSemana,
 			int horaInicio, int horaFim) throws H2Exception {
 
-		Horario horario;
-		Horario horario2 = new Horario();
+		Horario hor1;
+		Horario hor2 = new Horario();
 		int[] horas = { horaInicio, horaFim };
 		String[] params = { idTurma, diaDaSemana };
-		String msgHorario = "ok";
-		
+		String msgHorario = "";
+
+		// Verifica os parametros String passados como parametro.
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
+		// Verifica as horas passadas como parametro.
 		H2Validation.validaHoras(horas,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
+
+		// Verifica os dias da semana (Exemplo: Seguna ou Terça ou Quarta...).
 		H2Validation.validaDiaSemana(diaDaSemana,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
+		// Verifica se a turma passada como parametro está realmente cadastrada.
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createTurmaDaoIF().getTurmaById(idTurma),
 				H2ErrorMessages.TURMANAOCADASTRADA.getValor());
 
-		horario = new Horario(idTurma, diaDaSemana, horaInicio, horaFim);
+		// Cria um novo objeto horario com os parametros passados.
+		hor1 = new Horario(idTurma, diaDaSemana, horaInicio, horaFim);
 
-		horario2 = getHorarioByIntervalo(horario);
+		// Recupera um horario alocado a apartir de outro horario, onde as horas
+		// do intervalo das horas do hoario do parametro se
+		// chocam com as do horario a ser recuperado.
+		hor2 = getHorarioByIntervalo(hor1);
 
-		if (horario.getHoraInicio() <= horario2.getHoraInicio()
-				&& horario.getHoraFim() >= horario2.getHoraFim()) {
-			System.out.println(horario.getHoraInicio() + " <= "
-					+ horario2.getHoraInicio() + " && " + horario.getHoraFim()
-					+ " >= " + horario2.getHoraFim());
-			AbstractFactoryDao.createHorarioDaoIF().desaloca(horario2);
+		// Se o intervalo do horario 1 cobrir o intervalo do horario 2.
+		if (hor1.getHoraInicio() <= hor2.getHoraInicio()
+				&& hor1.getHoraFim() >= hor2.getHoraFim()) {
+
+			// Desaloca todo o horario.
+			AbstractFactoryDao.createHorarioDaoIF().desaloca(hor2);
+
+		// Se o inicio do intervalo do horario 1 for maior que o inicio e
+		// menor que o final do horario 2.
+		} else if (hor1.getHoraInicio() > hor2.getHoraInicio()
+				&& hor1.getHoraFim() >= hor2.getHoraFim()) {
+
+			// Desaloca o horario.
+			AbstractFactoryDao.createHorarioDaoIF().desaloca(hor2);
+
+			// Muda a hora final do horario 2 para hora inicial do horario 1
+			hor2.setHoraFim(hor1.getHoraInicio());
+
+			// Verifica se existe choque de horario no novo intervalo e atrubui
+			// possiveis mensagens.
+			msgHorario = validaHorario(hor2);
+
+			// Aloca novamente o horario com o novo intervalo
+			AbstractFactoryDao.createHorarioDaoIF().aloca(hor2);
+
+		// Se o final do intervalo do horario 1 for maior que o inicio e
+		// menor que o final do horario 2.
+		} else if (hor1.getHoraInicio() <= hor2.getHoraInicio()
+				&& hor1.getHoraFim() < hor2.getHoraFim()) {
+
+			// Desaloca o horario
+			AbstractFactoryDao.createHorarioDaoIF().desaloca(hor2);
+
+			// Muda a hora inicial do horario 2 para final do horario 1.
+			hor2.setHoraInicio(hor1.getHoraFim());
+
+			// Verifica se existe choque de horario no novo intervalo e atrubui
+			// possiveis mensagens.
+			msgHorario = validaHorario(hor2);
+
+			// Aloca novamente o horario com o novo intervalo.
+			AbstractFactoryDao.createHorarioDaoIF().aloca(hor2);
+
+		// Se o todo intervalo do horario estiver entre o inicio e o fim
+		// (mas não igual) do intervalo do horario 2.
+		} else {
+			throw new H2Exception(H2ErrorMessages.INTERVALOINVALIDO.getValor());
 		}
-
+		
+		// Retorna a mesagem que pode ser ok ou choques de horario.
 		return msgHorario;
 	}
 
@@ -103,24 +165,33 @@ public class RecursoHorario {
 	public String getHorario(String idTurma) throws H2Exception {
 
 		String result = "";
-		
+
+		// Verifica se o idTurma esta de acordo com as regras.
 		H2Validation.validaCampos(idTurma,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
+		// Verifica se existe a turma cadastrada no banco.
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createTurmaDaoIF().getTurmaById(idTurma),
 				H2ErrorMessages.TURMANAOCADASTRADA.getValor());
 
+		// Recupera todos os horarios refrentes a turma.
 		ArrayList<Horario> horarios = AbstractFactoryDao.createHorarioDaoIF()
 				.getAllHorariosByTurma(idTurma);
 
+		// percorre todos os horarios
 		for (Horario h : horarios) {
+			
+			// Valida cada horario verificando se não são nulos.
 			if (H2Validation.validaObjetos(h)) {
+				
+				// Atribui a mensagem referente ao dia da semana e as horas do horario.
 				result += h.getDiaSemana() + ": " + h.getHoraInicio() + " às "
 						+ h.getHoraFim() + " ";
 			}
 		}
 
+		// retorna a mesagem que pode ser ok ou choques de horario.
 		return result;
 	}
 
@@ -136,7 +207,7 @@ public class RecursoHorario {
 	 */
 	private String validaHorario(Horario h) {
 
-		String msgHorario = "ok";
+		String msgHorario = "Choque com ";
 
 		// Recupera todos os horarios do sistema.
 		ArrayList<Horario> horarios = AbstractFactoryDao.createHorarioDaoIF()
@@ -145,7 +216,12 @@ public class RecursoHorario {
 		// Compara todos os horarios da base de dados com o horario que está
 		// sendo alocado.
 		for (Horario hs : horarios) {
-			msgHorario = toCompareHorarios(hs, h);
+			msgHorario += toCompareHorarios(hs, h);
+		}
+
+		// Verifica se a mensagem foi atribuida ou não.
+		if (msgHorario.equals("Choque com ")) {
+			msgHorario = "ok";
 		}
 
 		return msgHorario;
@@ -167,9 +243,7 @@ public class RecursoHorario {
 	 */
 	private String toCompareHorarios(Horario h1, Horario h2) {
 
-		String msgHorario = "ok";
 		String choqs = "";
-		boolean isChoque = false;
 
 		// Recupera as turmas dos horarios
 		Turma t1 = AbstractFactoryDao.createTurmaDaoIF().getTurmaById(
@@ -186,27 +260,22 @@ public class RecursoHorario {
 				// Verifica se a sala são iguais.
 				if (t1.getIdSala().equals(t2.getIdSala())) {
 					choqs += t2.getIdSala() + " ";
-					isChoque = true;
 				}
 
 				// Verifica se os professores são iguais.
 				if (t1.getIdProf().equals(t2.getIdProf())) {
 					choqs += t2.getIdProf() + " ";
-					isChoque = true;
 				}
 
-				// Verifica se os periodos saõ iguais.
-				// TODO - Codigo aqui...
+				// Verifica se os periodos são iguais.
+				if (t1.getIdPeri().equals(t2.getIdPeri())) {
+					choqs += t2.getIdPeri() + " ";
+				}
 			}
 		}
 
-		// Se houver choque de turmas diferentes.
-		if (isChoque) {
-			msgHorario = "Choque com " + choqs;
-		}
-
 		// Retorna a mensagem de confirmação
-		return msgHorario;
+		return choqs;
 	}
 
 	/**
@@ -218,14 +287,20 @@ public class RecursoHorario {
 	private Horario getHorarioByIntervalo(Horario horario) throws H2Exception {
 
 		Horario h = null;
-
+		
+		// Percorre todas as horas do horario.
 		for (int i = horario.getHoraInicio(); i <= horario.getHoraFim(); i++) {
+			
+			// Se alguma hora colidir com alguma hora de algum horario no banco esse horario é retornado.
 			h = AbstractFactoryDao.createHorarioDaoIF().getHorarioByHIntevalo(
 					horario, i);
+			
+			// Se encontrar o horario, o retorna.
 			if (H2Validation.validaObjetos(h))
 				return h;
 		}
 
-		throw new H2Exception("Horario não alocado");
+		// Se o horario não colidir retorna a exeção
+		throw new H2Exception(H2ErrorMessages.HORARIONAOALOCADO.getValor());
 	}
 }

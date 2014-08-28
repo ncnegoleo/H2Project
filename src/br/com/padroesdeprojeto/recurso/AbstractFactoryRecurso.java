@@ -2,6 +2,7 @@ package br.com.padroesdeprojeto.recurso;
 
 import br.com.padroesdeprojeto.bean.Curso;
 import br.com.padroesdeprojeto.bean.Disciplina;
+import br.com.padroesdeprojeto.bean.Horario;
 import br.com.padroesdeprojeto.bean.Periodo;
 import br.com.padroesdeprojeto.bean.Professor;
 import br.com.padroesdeprojeto.bean.Sala;
@@ -92,5 +93,18 @@ public class AbstractFactoryRecurso {
 	 */
 	public static RecursoTurma createRecursoTurma() {
 		return new RecursoTurma();
+	}
+	
+	/**
+	 * Este método retorna uma instância de RecursoHorario para que seja possível
+	 * manipular seus métodos staticamente.
+	 * 
+	 * @return Um novo objeto {@link RecursoHorario}.
+	 * 
+	 * @see Horario
+	 * @see RecursoHorario
+	 */
+	public static RecursoHorario createRecursoHorario() {
+		return new RecursoHorario();
 	}
 }

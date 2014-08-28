@@ -24,10 +24,10 @@ import br.com.padroesdeprojeto.data.dao.hsql.HSQLTurma;
 public class AbstractFactoryDao {
 
 	/**
-	 * Este método retorna uma instância de DerbyProfessor para que seja possível
+	 * Este método retorna uma instância de HSQLProfessor para que seja possível
 	 * manipular seus métodos staticamente.
 	 * 
-	 * @return Um novo objeto {@link DerbyProfessor}.
+	 * @return Um novo objeto {@link Professor}.
 	 * 
 	 * @see Professor
 	 * @see ProfessorDaoIF
@@ -37,7 +37,7 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este método retorna uma instância de DerbyCurso para que seja possível
+	 * Este método retorna uma instância de HSQLCurso para que seja possível
 	 * manipular seus métodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link Curso}.
@@ -50,7 +50,7 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este método retorna uma instância de DerbySala para que seja possível
+	 * Este método retorna uma instância de HSQLSala para que seja possível
 	 * manipular seus métodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link Sala}.
@@ -63,7 +63,7 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este método retorna uma instância de DerbyPeriodo para que seja possível
+	 * Este método retorna uma instância de HSQLPeriodo para que seja possível
 	 * manipular seus métodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link Periodo}.
@@ -77,7 +77,7 @@ public class AbstractFactoryDao {
 
 	
 	/**
-	 * Este método retorna uma instância de DerbyDisciplina para que seja possível
+	 * Este método retorna uma instância de HSQLDisciplina para que seja possível
 	 * manipular seus métodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link Disciplina}.
@@ -90,7 +90,7 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este método retorna uma instância de DerbyTurmapara que seja possível
+	 * Este método retorna uma instância de HSQLTurma para que seja possível
 	 * manipular seus métodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link Turma}.
@@ -103,7 +103,7 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este método retorna uma instância de DerbyTurmapara que seja possível
+	 * Este método retorna uma instância de HSQLHorario para que seja possível
 	 * manipular seus métodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link Horario}.

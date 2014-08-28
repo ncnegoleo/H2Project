@@ -15,7 +15,9 @@ public enum H2ErrorMessages {
 	DISCIPLINANAOCADASTRADA("Disciplina não cadastrada"),
 	DISCIPLINAJACADASTRADA("Disciplina já cadastrada"),
 	TURMANAOCADASTRADA("Turma não cadastrada"),
-	TURMAJACADASTRADA("Turma já cadastrada");
+	TURMAJACADASTRADA("Turma já cadastrada"),
+	HORARIONAOALOCADO("Horário não alocado"),
+	INTERVALOINVALIDO("Intervalo do horario inválido");
 	
 	
 	private final String valor;

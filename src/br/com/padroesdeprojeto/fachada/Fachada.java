@@ -127,7 +127,8 @@ public class Fachada implements FachadaIF {
 	@Override
 	public void alteraTurma(String idTurma, String campo, String novoValor)
 			throws H2Exception {
-		AbstractFactoryRecurso.createRecursoTurma().alteraTurma(idTurma, campo, novoValor);
+		AbstractFactoryRecurso.createRecursoTurma().alteraTurma(idTurma, campo,
+				novoValor);
 	}
 
 	@Override
@@ -167,21 +168,22 @@ public class Fachada implements FachadaIF {
 	@Override
 	public String alocaTurmaAoHorario(String idTurma, String diaDaSemana,
 			int horaInicio, int horafim) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return AbstractFactoryRecurso.createRecursoHorario().aloca(idTurma,
+				diaDaSemana, horaInicio, horafim);
 	}
 
 	@Override
 	public String desalocaTurmaDoHorario(String idTurma, String diaDaSemana,
 			int horaInicio, int horaFim) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return AbstractFactoryRecurso.createRecursoHorario()
+				.desaloca(idTurma, diaDaSemana, horaInicio,
+						horaFim);
 	}
 
 	@Override
 	public String getHorario(String idTurma) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return AbstractFactoryRecurso.createRecursoHorario()
+				.getHorario(idTurma);
 	}
 
 	@Override
