@@ -9,7 +9,7 @@ import br.com.padroesdeprojeto.bean.Sala;
 import br.com.padroesdeprojeto.bean.Turma;
 
 /**
- * Esta classe serve para a cria√ß√£o de objetos e para a manipula√ß√£o dos dados dos
+ * Esta classe serve para a criaÁ„o de objetos e para a manipulaÁ„o dos dados dos
  * respectivos objetos.
  * 
  * @author Leonardo Soares.
@@ -18,8 +18,8 @@ import br.com.padroesdeprojeto.bean.Turma;
 public class AbstractFactoryRecurso {
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de RecursoProfessor para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de RecursoProfessor para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link RecursoProfessor}.
 	 * 
@@ -31,8 +31,8 @@ public class AbstractFactoryRecurso {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de RecursoCurso para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de RecursoCurso para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link RecursoCurso}.
 	 * 
@@ -44,8 +44,8 @@ public class AbstractFactoryRecurso {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de RecursoSala para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de RecursoSala para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link RecursoSala}.
 	 * 
@@ -57,8 +57,8 @@ public class AbstractFactoryRecurso {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de RecursoPeriodo para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de RecursoPeriodo para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link RecursoPeriodo}.
 	 * 
@@ -70,8 +70,8 @@ public class AbstractFactoryRecurso {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de RecursoDisciplina para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de RecursoDisciplina para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link RecursoDisciplina}.
 	 * 
@@ -83,8 +83,8 @@ public class AbstractFactoryRecurso {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de RecursoTurma para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de RecursoTurma para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link RecursoTurma}.
 	 * 
@@ -96,8 +96,8 @@ public class AbstractFactoryRecurso {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de RecursoHorario para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de RecursoHorario para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
 	 * @return Um novo objeto {@link RecursoHorario}.
 	 * 

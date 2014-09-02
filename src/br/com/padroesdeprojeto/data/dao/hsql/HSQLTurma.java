@@ -8,7 +8,7 @@ import br.com.padroesdeprojeto.data.dao.TurmaDaoIF;
 import br.com.padroesdeprojeto.bean.Turma;
 
 /**
- * Esta classe faz a intera√ß√£o da entrada dos dados da sala com o banco de
+ * Esta classe faz a interaÁ„o da entrada dos dados da sala com o banco de
  * dados.
  * 
  * @author Leonardo Soares.
@@ -29,7 +29,7 @@ public class HSQLTurma implements TurmaDaoIF{
 		// executa o sql no SGBD.
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o.
+		// fecha a conex„o.
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -46,7 +46,7 @@ public class HSQLTurma implements TurmaDaoIF{
 		// executa o sql no SGBD.
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o.
+		// fecha a conex„o.
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -59,7 +59,7 @@ public class HSQLTurma implements TurmaDaoIF{
 		// executa o sql no SGBD.
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o.
+		// fecha a conex„o.
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -78,7 +78,7 @@ public class HSQLTurma implements TurmaDaoIF{
 		// procura e retorna todos os registros //
 		try {
 			while (resultSet.next()) {
-				// atribui os registros encontrados em objeto que s√£o
+				// atribui os registros encontrados em objeto que s„o
 				// adicionados numa lista
 				turmas.add(new Turma(resultSet.getString(1), 
 						resultSet.getString(2), resultSet.getString(3),
@@ -92,7 +92,7 @@ public class HSQLTurma implements TurmaDaoIF{
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna as turmas
@@ -126,7 +126,7 @@ public class HSQLTurma implements TurmaDaoIF{
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna a turma

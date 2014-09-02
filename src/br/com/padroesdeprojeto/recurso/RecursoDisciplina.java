@@ -7,7 +7,7 @@ import br.com.padroesdeprojeto.validation.H2Validation;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
- * Esta classe serve para a manipula√ß√£o dos recursos de disciplina.
+ * Esta classe serve para a manipulaÁ„o dos recursos de disciplina.
  * 
  * @author Leonardo Soares Rodrigues
  * 
@@ -19,7 +19,7 @@ public class RecursoDisciplina {
 	private final String PERIODO = "Periodo";
 
 	/**
-	 * Este m√©todo serve controlador para a adi√ß√£o de novas disciplinas no
+	 * Este mÈtodo serve controlador para a adiÁ„o de novas disciplinas no
 	 * sistema.
 	 * 
 	 * @param identificadorDisciplina
@@ -29,12 +29,12 @@ public class RecursoDisciplina {
 	 * @param cargaHoraria
 	 *            A carga horaria em inteiro.
 	 * @param identificadorCurso
-	 *            O id de um curso j√° cadastrado.
-	 * @param identificadorperiodo
-	 *            O id de um periodo j√° cadastrado.
+	 *            O id de um curso j· cadastrado.
+	 * @param identificadorPeriodo
+	 *            O id de um periodo j· cadastrado.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou ja exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou ja exista
 	 *             o id da disciplina cadastrado na base de dados
 	 */
 	public void addDisciplina(String identificadorDisciplina,
@@ -45,7 +45,7 @@ public class RecursoDisciplina {
 		String[] params = { identificadorDisciplina, nomeDisciplina,
 				identificadorCurso, identificadorPeriodo };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -53,12 +53,12 @@ public class RecursoDisciplina {
 		H2Validation.validaNumNaturais(cargaHoraria,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
-		// Verifica se o id do curso informado est√° cadastrado no banco de dados
+		// Verifica se o id do curso informado est· cadastrado no banco de dados
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createCursoDaoIF().getCursoBySilga(identificadorCurso),
 				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
 
-		// Verifica se o id do periodo informado est√° cadastrado no banco de
+		// Verifica se o id do periodo informado est· cadastrado no banco de
 		// dados
 		H2Validation.validaObjetosNaoNulos(
 				AbstractFactoryDao.createPeriodoDaoIF().getPeriodoByName(
@@ -71,7 +71,7 @@ public class RecursoDisciplina {
 
 		disciplina.setCargaHoraria(cargaHoraria);
 
-		// Verifica se a disciplina j√° exite no banco de dados
+		// Verifica se a disciplina j· exite no banco de dados
 		if (H2Validation.validaObjetosNulos(
 				AbstractFactoryDao.createDisciplinaDaoIF()
 						.getDisciplinaBySigla(identificadorDisciplina,
@@ -85,11 +85,11 @@ public class RecursoDisciplina {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a altera√ß√£o de disciplinas na base de
+	 * Este mÈtodo como controlador para a alteraÁ„o de disciplinas na base de
 	 * dados
 	 * 
 	 * @param idCurso
-	 *            O id de um curso j√° cadastrado.
+	 *            O id de um curso j· cadastrado.
 	 * @param sigla
 	 *            A sigla da Disciplina
 	 * @param atributo
@@ -98,13 +98,13 @@ public class RecursoDisciplina {
 	 *            Um novo valor para o atributo a ser alterado.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o id da disciplina cadastrado na base de dados
 	 */
 	public void alteraDisciplina(String idCurso, String sigla, String atributo,
 			String novoValor) throws H2Exception {
 
-		// Verifica se o id do periodo informado est√° cadastrado no banco de
+		// Verifica se o id do periodo informado est· cadastrado no banco de
 		// dados
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createCursoDaoIF().getCursoBySilga(idCurso),
@@ -122,7 +122,7 @@ public class RecursoDisciplina {
 		Disciplina disciplina = AbstractFactoryDao.createDisciplinaDaoIF()
 				.getDisciplinaBySigla(sigla, idCurso);
 
-		// Verifica se a disciplina est√° cadastrada no banco
+		// Verifica se a disciplina est· cadastrada no banco
 		H2Validation.validaObjetosNaoNulos(disciplina,
 				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 
@@ -143,7 +143,7 @@ public class RecursoDisciplina {
 			disciplina.setCargaHoraria(parsedValue);
 			break;
 		case PERIODO:
-			// Verifica se a disciplina est√° cadastrada no banco
+			// Verifica se a disciplina est· cadastrada no banco
 			H2Validation.validaObjetosNaoNulos(
 					AbstractFactoryDao.createPeriodoDaoIF().getPeriodoByName(
 							novoValor, disciplina.getSiglaCurso()),
@@ -160,16 +160,16 @@ public class RecursoDisciplina {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a dele√ß√£o de disciplinas na base de
+	 * Este mÈtodo como controlador para a deleÁ„o de disciplinas na base de
 	 * dados
 	 * 
 	 * @param idCurso
-	 *            O id de um curso j√° cadastrado.
+	 *            O id de um curso j· cadastrado.
 	 * @param idDisciplina
-	 *            A sigla da Disciplina j√° cadastrada
+	 *            A sigla da Disciplina j· cadastrada
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o id da disciplina cadastrado na base de dados
 	 */
 	public void removeDisciplna(String idCurso, String idDisciplina)
@@ -183,13 +183,13 @@ public class RecursoDisciplina {
 		H2Validation.validaCampos(idDisciplina,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
-		// Verifica se o id do periodo informado est√° cadastrado no banco de
+		// Verifica se o id do periodo informado est· cadastrado no banco de
 		// dados
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createCursoDaoIF().getCursoBySilga(idCurso),
 				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
 
-		// Verifica se a disciplina est√° cadastrada no banco
+		// Verifica se a disciplina est· cadastrada no banco
 		H2Validation.validaObjetosNaoNulos(
 				AbstractFactoryDao.createDisciplinaDaoIF()
 						.getDisciplinaBySigla(idDisciplina, idCurso),
@@ -200,18 +200,18 @@ public class RecursoDisciplina {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a recupera√ß√£o de disciplinas na base de
+	 * Este mÈtodo como controlador para a recuperaÁ„o de disciplinas na base de
 	 * dados
 	 * 
 	 * @param idCurso
-	 *            O id de um curso j√° cadastrado.
+	 *            O id de um curso j· cadastrado.
 	 * @param idDisciplina
-	 *            A sigla da Disciplina j√° cadastrada
+	 *            A sigla da Disciplina j· cadastrada
 	 * 
 	 * @return To String do Objeto.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o id da disciplina cadastrado na base de dados
 	 */
 	public String getDisciplina(String idCurso, String idDisciplina)
@@ -229,7 +229,7 @@ public class RecursoDisciplina {
 		Disciplina disciplina = AbstractFactoryDao.createDisciplinaDaoIF()
 				.getDisciplinaBySigla(idDisciplina, idCurso);
 
-		// Verifica se existe a dsciplina est√° cadastrada no banco
+		// Verifica se existe a dsciplina est· cadastrada no banco
 		H2Validation.validaObjetosNaoNulos(disciplina,
 				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 

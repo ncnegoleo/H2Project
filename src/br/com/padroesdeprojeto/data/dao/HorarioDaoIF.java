@@ -7,7 +7,7 @@ import br.com.padroesdeprojeto.bean.Horario;
 public interface HorarioDaoIF {
 
 	/**
-	 * Esta assinatura de m√©todo serve para implementa√ß√£o do m√©todo de aloca√ß√£o
+	 * Esta assinatura de mÈtodo serve para implementaÁ„o do mÈtodo de alocaÁ„o
 	 * de turmas no horario definido.
 	 * 
 	 * @param h
@@ -16,8 +16,8 @@ public interface HorarioDaoIF {
 	public void aloca(Horario h);
 
 	/**
-	 * Esta assinatura de m√©todo serve para implementa√ß√£o do m√©todo de
-	 * desaloca√ß√£o de turmas no horario definido.
+	 * Esta assinatura de mÈtodo serve para implementaÁ„o do mÈtodo de
+	 * desalocaÁ„o de turmas no horario definido.
 	 * 
 	 * @param h
 	 *            Um objeto do tipo {@link Horario} para ser inserido.
@@ -25,7 +25,7 @@ public interface HorarioDaoIF {
 	public void desaloca(Horario h);
 
 	/**
-	 * Recupera todos os horarios que uma determinada turma est√° alocada.
+	 * Recupera todos os horarios que uma determinada turma est· alocada.
 	 * 
 	 * @param id
 	 *            O id da turma.
@@ -33,15 +33,22 @@ public interface HorarioDaoIF {
 	public ArrayList<Horario> getAllHorariosByTurma(String id);
 
 	/**
+	 * Recupera todos os horarios cadastrados no banco.
 	 * 
-	 * @return
+	 * @return ArrayList dos Horarios cadastrados.
 	 */
 	public ArrayList<Horario> getAllHorarios();
 
 	/**
+	 * Recupera o primeiro horario que cuja a hora corresponda seja inicial ou
+	 * final e atributos dos objeto h coincidam com algum no banco de dados.
 	 * 
 	 * @param h
-	 * @return
+	 *            Objeto do tipo {@link Horario}
+	 * 
+	 * @param hora
+	 *            hora inicial.
+	 * @return Objeto do tipo {@link Horario}
 	 */
 	public Horario getHorarioByHIntevalo(Horario h, int hora);
 }

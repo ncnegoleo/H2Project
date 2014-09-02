@@ -7,7 +7,7 @@ import br.com.padroesdeprojeto.validation.H2Validation;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
- * Esta classe serve como controladora para a manipula√ß√£o dos recursos de
+ * Esta classe serve como controladora para a manipulaÁ„o dos recursos de
  * professor.
  * 
  * @author Leonardo Soares Rodrigues
@@ -16,7 +16,7 @@ import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 public class RecursoProfessor {
 
 	/**
-	 * Este m√©todo serve controlador para a adi√ß√£o de novos professores no
+	 * Este mÈtodo serve controlador para a adiÁ„o de novos professores no
 	 * sistema.
 	 * 
 	 * @param nome
@@ -25,7 +25,7 @@ public class RecursoProfessor {
 	 *            Matricula do Professor
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou ja exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou ja exista
 	 *             a matricula cadastrada na base de dados
 	 */
 	public void addProfessor(String nome, String matricula) throws H2Exception {
@@ -33,7 +33,7 @@ public class RecursoProfessor {
 		Professor professor = new Professor();
 		String[] params = { nome, matricula };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -41,7 +41,7 @@ public class RecursoProfessor {
 
 		professor.setMatricula(matricula);
 
-		// verifica se n√£o existe professores com a mesma matricula no banco.
+		// verifica se n„o existe professores com a mesma matricula no banco.
 		if (H2Validation.validaObjetosNulos(AbstractFactoryDao
 				.createProfessorDaoIF().getProfessorByMatricula(matricula),
 				H2ErrorMessages.PROFESSORJACADASTRADO.getValor())) {
@@ -52,7 +52,7 @@ public class RecursoProfessor {
 	}
 
 	/**
-	 * Este m√©todo serve como controlador para a altera√ß√£o de um professor na
+	 * Este mÈtodo serve como controlador para a alteraÁ„o de um professor na
 	 * base de dados
 	 * 
 	 * @param matricula
@@ -60,7 +60,7 @@ public class RecursoProfessor {
 	 * @param novoNome
 	 *            O novo nome do Proessor
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             a matricula cadastrada na base de dados
 	 */
 	public void alteraProfessor(String matricula, String novoNome)
@@ -82,19 +82,19 @@ public class RecursoProfessor {
 		// Altera o nome do profesor
 		professor.setNome(novoNome);
 
-		// grava a altera√ß√£o na base de dados
+		// grava a alteraÁ„o na base de dados
 		AbstractFactoryDao.createProfessorDaoIF().altera(professor);
 	}
 
 	/**
-	 * Este m√©todo como controlador para a remo√ß√£o de professores na base de
+	 * Este mÈtodo como controlador para a remoÁ„o de professores na base de
 	 * dados
 	 * 
 	 * @param matricula
 	 *            Matricula do Professor
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             a matricula cadastrada na base de dados
 	 */
 	public void removeProfessor(String matricula) throws H2Exception {
@@ -113,7 +113,7 @@ public class RecursoProfessor {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a recupera√ß√£o de professores na base de
+	 * Este mÈtodo como controlador para a recuperaÁ„o de professores na base de
 	 * dados.
 	 * 
 	 * @param matricula
@@ -122,7 +122,7 @@ public class RecursoProfessor {
 	 * @return ToString do Objeto
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             a matricula cadastrada na base de dados
 	 */
 	public String getProfessor(String matricula) throws H2Exception {
@@ -132,7 +132,7 @@ public class RecursoProfessor {
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// se existir, retorna um professores com a matricula igual a do
-		// par√¢metro no banco, se n√£o existir o valor inst√¢ncia ser√° nulo.
+		// par‚metro no banco, se n„o existir o valor inst‚ncia ser· nulo.
 		Professor professor = AbstractFactoryDao.createProfessorDaoIF()
 				.getProfessorByMatricula(matricula);
 

@@ -7,7 +7,7 @@ import br.com.padroesdeprojeto.validation.H2Validation;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
- * Esta classe serve para a manipula√ß√£o dos recursos de period.
+ * Esta classe serve para a manipulaÁ„o dos recursos de period.
  * 
  * @author Leonardo Soares Rodrigues
  * 
@@ -15,7 +15,7 @@ import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 public class RecursoPeriodo {
 
 	/**
-	 * Este m√©todo serve controlador para a adi√ß√£o de novos periodos no sistema.
+	 * Este mÈtodo serve controlador para a adiÁ„o de novos periodos no sistema.
 	 * 
 	 * @param nomePeriodo
 	 *            Nome do periodo no formato "2013.1"
@@ -23,7 +23,7 @@ public class RecursoPeriodo {
 	 *            A sigla do curso do periodo que o periodo pertence.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou ja exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou ja exista
 	 *             o nome do periodo ou curso cadastrados na base de dados
 	 */
 	public void addPeriodo(String nomePeriodo, String sigla) throws H2Exception {
@@ -32,7 +32,7 @@ public class RecursoPeriodo {
 
 		String[] params = { nomePeriodo, sigla };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -43,7 +43,7 @@ public class RecursoPeriodo {
 				.createCursoDaoIF().getCursoBySilga(sigla),
 				H2ErrorMessages.CURSONAOCADASTRADO.getValor());
 
-		// Verifica se j√° existe o perido cadastrado no mesmo curso.
+		// Verifica se j· existe o perido cadastrado no mesmo curso.
 		if (H2Validation.validaObjetosNulos(AbstractFactoryDao
 				.createPeriodoDaoIF().getPeriodoByName(nomePeriodo, sigla),
 				H2ErrorMessages.PERIODOJACADASTRADO.getValor())) {
@@ -54,7 +54,7 @@ public class RecursoPeriodo {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a remo√ß√£o de periodos na base de dados
+	 * Este mÈtodo como controlador para a remoÁ„o de periodos na base de dados
 	 *
 	 * @param sigla
 	 *            A sigla do curso do periodo que o periodo pertence.
@@ -62,7 +62,7 @@ public class RecursoPeriodo {
 	 *            Nome do periodo no formato "2013.1"
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o nome do periodo cadastrado na base de dados
 	 */
 	public void removePeriodo(String sigla, String nomePeriodo)
@@ -70,7 +70,7 @@ public class RecursoPeriodo {
 
 		String[] params = { nomePeriodo, sigla };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -84,7 +84,7 @@ public class RecursoPeriodo {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a recupera√ß√£o de periodos na base de
+	 * Este mÈtodo como controlador para a recuperaÁ„o de periodos na base de
 	 * dados.
 	 * 
 	 * @param sigla
@@ -95,7 +95,7 @@ public class RecursoPeriodo {
 	 * @return ToString do Objeto
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o nome do perido cadastrado na base de dados
 	 */
 	public String getPeriodo(String nomePeriodo, String sigla)
@@ -103,12 +103,12 @@ public class RecursoPeriodo {
 
 		String[] params = { nomePeriodo, sigla };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// se existir, retorna um periodo com a nome e o curso iguais aos dos
-		// par√¢metros no banco, se n√£o existir o valor inst√¢ncia ser√° nulo.
+		// par‚metros no banco, se n„o existir o valor inst‚ncia ser· nulo.
 		Periodo periodo = AbstractFactoryDao.createPeriodoDaoIF()
 				.getPeriodoByName(nomePeriodo, sigla);
 

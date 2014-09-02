@@ -123,7 +123,7 @@ public class RecursoTurmaTest {
 	@Test(expected = H2Exception.class)
 	public void testAddNovaTurmaSalaInexistente() throws H2Exception {
 		addObjetosPTurma();
-		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S13B", "2013.1");
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S14E", "2013.1");
 	}
 	
 	@Test(expected = H2Exception.class)
@@ -144,7 +144,132 @@ public class RecursoTurmaTest {
 		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2015.2");
 	}
 	
-	// Altera vai dar muito trabalho.. Fazer depois
+	@Test
+	public void testAlteraProfessorTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Professor", "002");
+		String turma = fachada.getTurma("TPPADS");
+		assertEquals("(TPPADS, ADS, 002, PP, S12C, 2013.1)", turma);
+	}
+	
+	@Test
+	public void testAlteraDisciplinaTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Disciplina", "BD");
+		String turma = fachada.getTurma("TPPADS");
+		assertEquals("(TPPADS, ADS, 001, BD, S12C, 2013.1)", turma);
+	}
+	
+	@Test
+	public void testAlteraSalaTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Sala", "S13B");
+		String turma = fachada.getTurma("TPPADS");
+		assertEquals("(TPPADS, ADS, 001, PP, S13B, 2013.1)", turma);
+	}
+	
+	@Test
+	public void testAlteraPeriodoTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Periodo", "2014.1");
+		String turma = fachada.getTurma("TPPADS");
+		assertEquals("(TPPADS, ADS, 001, PP, S12C, 2014.1)", turma);
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraProfessorInvalidoTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Professor", "003");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraDisciplinaInvalidaTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Disciplina", "ING");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraSalaInvalidaTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Sala", "S15G");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraPeriodoInvalidoTurma() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Periodo", "2015.8");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaIdVazio() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("", "Sala", "S12C");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaIdNulo() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma(null, "Sala", "S12C");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaIdInvalido() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TINGADS", "Sala", "S12C");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaAtributoVazio() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "", "002");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaAtributoNulo() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", null, "002");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaAtributoInvalido() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Id", "TDBADS");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaNovoValorVazio() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Professor", "");
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaNovoValorNulo() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Professor", null);
+	}
+	
+	@Test(expected = H2Exception.class)
+	public void testAlteraTurmaNovoValorInvalido() throws H2Exception {
+		addObjetosPTurma();
+		fachada.addTurma("TPPADS", "ADS", "001", "PP", "S12C", "2013.1");
+		fachada.alteraTurma("TPPADS", "Professor", "008");
+	}
 	
 	@Test
 	public void testRemoveTurma() throws H2Exception {
@@ -177,8 +302,12 @@ public class RecursoTurmaTest {
 	private void addObjetosPTurma() throws H2Exception {
 		fachada.addCurso("ADS", "Analise e Desenvolvimento de Sistemas");
 		fachada.addProfessor("001", "Mirna");
+		fachada.addProfessor("002", "Hugo");
 		fachada.addPeriodo("2013.1", "ADS");
+		fachada.addPeriodo("2014.1", "ADS");
 		fachada.addDisciplinaAoPeriodo("PP", "Padrões de Projeto", 100, "ADS", "2013.1");
+		fachada.addDisciplinaAoPeriodo("BD", "Banco de Dados", 100, "ADS", "2013.1");
 		fachada.addSala("S12C", "C");
+		fachada.addSala("S13B", "B");
 	}
 }

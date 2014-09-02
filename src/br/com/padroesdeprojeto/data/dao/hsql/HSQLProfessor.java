@@ -8,7 +8,7 @@ import br.com.padroesdeprojeto.data.dao.ProfessorDaoIF;
 import br.com.padroesdeprojeto.bean.Professor;
 
 /**
- * Esta classe faz a intera√ß√£o da entrada dos dados do professor com o banco de
+ * Esta classe faz a interaÁ„o da entrada dos dados do professor com o banco de
  * dados.
  * 
  * @author Leonardo Soares.
@@ -26,7 +26,7 @@ public class HSQLProfessor implements ProfessorDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -40,7 +40,7 @@ public class HSQLProfessor implements ProfessorDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -54,7 +54,7 @@ public class HSQLProfessor implements ProfessorDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -85,7 +85,7 @@ public class HSQLProfessor implements ProfessorDaoIF {
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna os professores
@@ -119,7 +119,7 @@ public class HSQLProfessor implements ProfessorDaoIF {
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna o professor

@@ -2,6 +2,7 @@ package br.com.padroesdeprojeto.data.dao;
 
 import br.com.padroesdeprojeto.bean.Curso;
 import br.com.padroesdeprojeto.bean.Disciplina;
+import br.com.padroesdeprojeto.bean.Horario;
 import br.com.padroesdeprojeto.bean.Periodo;
 import br.com.padroesdeprojeto.bean.Professor;
 import br.com.padroesdeprojeto.bean.Sala;
@@ -15,7 +16,7 @@ import br.com.padroesdeprojeto.data.dao.hsql.HSQLSala;
 import br.com.padroesdeprojeto.data.dao.hsql.HSQLTurma;
 
 /**
- * Esta classe serve para a cria√ß√£o de objetos e para a manipula√ß√£o dos dados dos
+ * Esta classe serve para a criaÁ„o de objetos e para a manipulaÁ„o dos dados dos
  * respectivos objetos.
  * 
  * @author Leonardo Soares.
@@ -24,10 +25,10 @@ import br.com.padroesdeprojeto.data.dao.hsql.HSQLTurma;
 public class AbstractFactoryDao {
 
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de HSQLProfessor para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de HSQLProfessor para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
-	 * @return Um novo objeto {@link Professor}.
+	 * @return Um novo objeto {@link HSQLProfessor}.
 	 * 
 	 * @see Professor
 	 * @see ProfessorDaoIF
@@ -37,10 +38,10 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de HSQLCurso para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de HSQLCurso para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
-	 * @return Um novo objeto {@link Curso}.
+	 * @return Um novo objeto {@link HSQLCurso}.
 	 * 
 	 * @see Curso
 	 * @see CursoDaoIF
@@ -50,10 +51,10 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de HSQLSala para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de HSQLSala para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
-	 * @return Um novo objeto {@link Sala}.
+	 * @return Um novo objeto {@link HSQLSala}.
 	 * 
 	 * @see Sala
 	 * @see SalaDaoIF
@@ -63,10 +64,10 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de HSQLPeriodo para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de HSQLPeriodo para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
-	 * @return Um novo objeto {@link Periodo}.
+	 * @return Um novo objeto {@link HSQLPeriodo}.
 	 * 
 	 * @see Periodo
 	 * @see PeriodoDaoIF
@@ -77,10 +78,10 @@ public class AbstractFactoryDao {
 
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de HSQLDisciplina para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de HSQLDisciplina para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
-	 * @return Um novo objeto {@link Disciplina}.
+	 * @return Um novo objeto {@link HSQLDisciplina}.
 	 * 
 	 * @see Disciplina
 	 * @see DisciplinaDaoIF
@@ -90,10 +91,10 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de HSQLTurma para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de HSQLTurma para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
-	 * @return Um novo objeto {@link Turma}.
+	 * @return Um novo objeto {@link HSQLTurma}.
 	 * 
 	 * @see Turma
 	 * @see TurmaDaoIF
@@ -103,10 +104,10 @@ public class AbstractFactoryDao {
 	}
 	
 	/**
-	 * Este m√©todo retorna uma inst√¢ncia de HSQLHorario para que seja poss√≠vel
-	 * manipular seus m√©todos staticamente.
+	 * Este mÈtodo retorna uma inst‚ncia de HSQLHorario para que seja possÌvel
+	 * manipular seus mÈtodos staticamente.
 	 * 
-	 * @return Um novo objeto {@link Horario}.
+	 * @return Um novo objeto {@link HSQLHorario}.
 	 * 
 	 * @see Horario
 	 * @see HorarioDaoIF

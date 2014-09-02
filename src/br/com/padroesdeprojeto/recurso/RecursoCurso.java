@@ -7,7 +7,7 @@ import br.com.padroesdeprojeto.validation.H2Validation;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
- * Esta classe serve para a manipula√ß√£o dos recursos de curso.
+ * Esta classe serve para a manipulaÁ„o dos recursos de curso.
  * 
  * @author Leonardo Soares Rodrigues
  * 
@@ -15,7 +15,7 @@ import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 public class RecursoCurso {
 
 	/**
-	 * Este m√©todo serve controlador para a adi√ß√£o de novos cursos no sistema.
+	 * Este mÈtodo serve controlador para a adiÁ„o de novos cursos no sistema.
 	 * 
 	 * @param id
 	 *            Identificador do curso.
@@ -23,7 +23,7 @@ public class RecursoCurso {
 	 *            nome do curso
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou ja exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou ja exista
 	 *             o id cadastrado na base de dados
 	 */
 	public void addCurso(String id, String nome) throws H2Exception {
@@ -31,7 +31,7 @@ public class RecursoCurso {
 		Curso curso = new Curso();
 		String[] params = { id, nome };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -39,7 +39,7 @@ public class RecursoCurso {
 
 		curso.setNome(nome);
 
-		// verifica se n√£o existe curso com a mesma sigla no banco.
+		// verifica se n„o existe curso com a mesma sigla no banco.
 		if (H2Validation.validaObjetosNulos(AbstractFactoryDao
 				.createCursoDaoIF().getCursoBySilga(id),
 				H2ErrorMessages.CURSOJACADASTRADO.getValor())) {
@@ -50,7 +50,7 @@ public class RecursoCurso {
 	}
 
 	/**
-	 * Este m√©todo serve como controlador para a altera√ß√£o de um curso na base
+	 * Este mÈtodo serve como controlador para a alteraÁ„o de um curso na base
 	 * de dados
 	 * 
 	 * @param identificador
@@ -59,7 +59,7 @@ public class RecursoCurso {
 	 *            O novo nome para o cursp.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o identificado cadastrado na base de dados
 	 */
 	public void alterarCurso(String identificador, String novoValor)
@@ -67,7 +67,7 @@ public class RecursoCurso {
 
 		String[] params = { identificador, novoValor };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -87,13 +87,13 @@ public class RecursoCurso {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a remo√ß√£o de cursos na base de dados
+	 * Este mÈtodo como controlador para a remoÁ„o de cursos na base de dados
 	 * 
 	 * @param identificador
 	 *            id do Curso
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o id cadastrado na base de dados
 	 */
 	public void removeCurso(String identificador) throws H2Exception {
@@ -102,7 +102,7 @@ public class RecursoCurso {
 		H2Validation.validaCampos(identificador,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
-		// verifica se existe cursos com o id igual ao do par√¢metro
+		// verifica se existe cursos com o id igual ao do par‚metro
 		// no banco
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 				.createCursoDaoIF().getCursoBySilga(identificador),
@@ -113,7 +113,7 @@ public class RecursoCurso {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a recupera√ß√£o de cursos na base de
+	 * Este mÈtodo como controlador para a recuperaÁ„o de cursos na base de
 	 * dados.
 	 * 
 	 * @param idCurso
@@ -121,17 +121,17 @@ public class RecursoCurso {
 	 * @return ToString do Objeto
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             a matricula cadastrada na base de dados
 	 */
 	public String getCurso(String idCurso) throws H2Exception {
 
-		// valida se a entrada do id est√° de acordo com as regras.
+		// valida se a entrada do id est· de acordo com as regras.
 		H2Validation.validaCampos(idCurso,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// se existir, retorna um curso com o id igual a do
-		// par√¢metro no banco, se n√£o existir o valor inst√¢ncia ser√° nulo.
+		// par‚metro no banco, se n„o existir o valor inst‚ncia ser· nulo.
 		Curso curso = AbstractFactoryDao.createCursoDaoIF().getCursoBySilga(
 				idCurso);
 

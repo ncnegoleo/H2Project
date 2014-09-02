@@ -3,7 +3,7 @@ package br.com.padroesdeprojeto.bean;
 import java.io.Serializable;
 
 /**
- * Esta classe serve como modelo para a gravaÃ§Ã£o dos objetos Disciplina na base
+ * Esta classe serve como modelo para a gravação dos objetos Disciplina na base
  * de dados.
  * 
  * @author Leonardo Soares Rodrigues.

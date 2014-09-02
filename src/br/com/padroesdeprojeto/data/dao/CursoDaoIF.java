@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import br.com.padroesdeprojeto.bean.Curso;
 
 /**
- * Esta interface segue server para padronizar a implementaÃ§Ã£o dos mÃ©todos de
- * manipulaÃ§Ã£o dos dados tornando assim mais maleÃ¡vel a troca do banco de dados.
+ * Esta interface segue server para padronizar a implementação dos métodos de
+ * manipulação dos dados tornando assim mais maleável a troca do banco de dados.
  * 
  * @author Leonardo Soares Rodrigues.
  *
@@ -14,7 +14,7 @@ import br.com.padroesdeprojeto.bean.Curso;
 public interface CursoDaoIF {
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de inserÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de inserção
 	 * de curso do banco de dados.
 	 * 
 	 * @param c
@@ -23,27 +23,27 @@ public interface CursoDaoIF {
 	public void insere(Curso c);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de alteraÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de alteração
 	 * de curso do banco de dados.
 	 * 
 	 * @param c
-	 *            Um objeto do tipo {@link Curso} com as devidas alteraÃ§Ãµes onde
-	 *            irÃ¡ substituir os dados de outro no banco.
+	 *            Um objeto do tipo {@link Curso} com as devidas alterações onde
+	 *            irá substituir os dados de outro no banco.
 	 */
 	public void altera(Curso c);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de remoÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de remoção
 	 * de cursos do banco de dados.
 	 * 
 	 * @param id
-	 *            Um numero que representa um Ã­ndice do curso que serÃ¡ deletada
+	 *            Um numero que representa um índice do curso que será deletada
 	 *            no banco.
 	 */
 	public void deleta(String id);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo que recupera
+	 * Esta assinatura de método serve para implementação do método que recupera
 	 * todos os cursos do banco de dados em uma lista.
 	 * 
 	 * @return Lista (ArrayList) de objetos do tipo {@link Curso}.
@@ -51,7 +51,7 @@ public interface CursoDaoIF {
 	public ArrayList<Curso> getAllCursos();
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo que recupera
+	 * Esta assinatura de método serve para implementação do método que recupera
 	 * curos do banco de dados a partir da sigla.
 	 * 
 	 * @param sigla

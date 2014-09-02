@@ -7,7 +7,7 @@ import br.com.padroesdeprojeto.validation.H2Validation;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
- * Esta classe serve para a manipula√ß√£o dos recursos de sala.
+ * Esta classe serve para a manipulaÁ„o dos recursos de sala.
  * 
  * @author Leonardo Soares Rodrigues
  *
@@ -15,7 +15,7 @@ import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 public class RecursoSala {
 
 	/**
-	 * Este m√©todo serve controlador para a adi√ß√£o de novas salas no sistema.
+	 * Este mÈtodo serve controlador para a adiÁ„o de novas salas no sistema.
 	 * 
 	 * @param idSala
 	 *            Identificador da Sala.
@@ -23,7 +23,7 @@ public class RecursoSala {
 	 *            Bloco da sala.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou ja exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou ja exista
 	 *             o id cadastrado na base de dados
 	 */
 	public void addSala(String idSala, String bloco) throws H2Exception {
@@ -31,7 +31,7 @@ public class RecursoSala {
 		Sala sala = new Sala();
 		String[] params = { idSala, bloco };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -39,7 +39,7 @@ public class RecursoSala {
 
 		sala.setBloco(bloco);
 
-		// verifica se n√£o existe professores com a mesma id.
+		// verifica se n„o existe professores com a mesma id.
 		if (H2Validation.validaObjetosNulos(AbstractFactoryDao
 				.createSalaDaoIF().getSalaById(idSala),
 				H2ErrorMessages.SALAJACADASTRADA.getValor())) {
@@ -50,23 +50,23 @@ public class RecursoSala {
 	}
 
 	/**
-	 * Este m√©todo serve como controlador para a altera√ß√£o de uma sala na base
+	 * Este mÈtodo serve como controlador para a alteraÁ„o de uma sala na base
 	 * de dados
 	 * 
 	 * @param idSala
 	 *            Identificador da Sala.
-	 * @param bloco
+	 * @param novoBloco
 	 *            Novo bloco da sala.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o id cadastrada na base de dados
 	 */
 	public void alteraSala(String idSala, String novoBloco) throws H2Exception {
 
 		String[] params = { idSala, novoBloco };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -80,18 +80,18 @@ public class RecursoSala {
 		// Altera o nome do profesor
 		sala.setBloco(novoBloco);
 
-		// grava a altera√ß√£o na base de dados
+		// grava a alteraÁ„o na base de dados
 		AbstractFactoryDao.createSalaDaoIF().altera(sala);
 	}
 
 	/**
-	 * Este m√©todo como controlador para a remo√ß√£o de salas na base de dados
+	 * Este mÈtodo como controlador para a remoÁ„o de salas na base de dados
 	 * 
 	 * @param idSala
 	 *            Identificador da Sala.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o id cadastrado na base de dados
 	 */
 	public void removeSala(String idSala) throws H2Exception {
@@ -110,7 +110,7 @@ public class RecursoSala {
 	}
 
 	/**
-	 * Este m√©todo como controlador para a recupera√ß√£o de salas na base de
+	 * Este mÈtodo como controlador para a recuperaÁ„o de salas na base de
 	 * dados.
 	 * 
 	 * @param idSala
@@ -119,7 +119,7 @@ public class RecursoSala {
 	 * @return ToString do Objeto
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             a matricula cadastrada na base de dados
 	 */
 	public String getSala(String idSala) throws H2Exception {
@@ -129,7 +129,7 @@ public class RecursoSala {
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// se existir, retorna uma sala com a matricula igual a do
-		// par√¢metro no banco, se n√£o existir o valor inst√¢ncia ser√° nulo.
+		// par‚metro no banco, se n„o existir o valor inst‚ncia ser· nulo.
 		Sala sala = AbstractFactoryDao.createSalaDaoIF().getSalaById(idSala);
 
 		// Verfica se o professor existe na base de dados

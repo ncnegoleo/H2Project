@@ -21,7 +21,7 @@ public class HSQLHorario implements HorarioDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -37,7 +37,7 @@ public class HSQLHorario implements HorarioDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -49,7 +49,7 @@ public class HSQLHorario implements HorarioDaoIF {
 				+ id
 				+ "' ORDER BY "
 				+ "CASE DIA_SEMANA WHEN 'Segunda' THEN 1 "
-				+ "WHEN 'Ter√ßa' THEN 2 WHEN 'Quarta' THEN 3 "
+				+ "WHEN 'TerÁa' THEN 2 WHEN 'Quarta' THEN 3 "
 				+ "WHEN 'Quinta' THEN 4  ELSE 5 END ";
 
 		ArrayList<Horario> horarios = new ArrayList<Horario>();
@@ -74,7 +74,7 @@ public class HSQLHorario implements HorarioDaoIF {
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 
 		// retorna os horarios
@@ -109,7 +109,7 @@ public class HSQLHorario implements HorarioDaoIF {
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 
 		// retorna os horarios
@@ -147,7 +147,7 @@ public class HSQLHorario implements HorarioDaoIF {
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 
 		// retorna os horarios

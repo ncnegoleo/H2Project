@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Esta classe cria o banco de dados, a conex√£o, as tabelas e executa os
- * comandos de altera√ß√£o e recupera√ß√£o dos dados.
+ * Esta classe cria o banco de dados, a conex„o, as tabelas e executa os
+ * comandos de alteraÁ„o e recuperaÁ„o dos dados.
  * 
  * @author Leonardo Soares.
  * 
@@ -25,7 +25,7 @@ public class ConexaoHSQL {
 	private final String USER = "SA";
 	private final String PASSWORD = "";
 
-	/* conex√£o do banco */
+	/* conex„o do banco */
 	private Connection conn = null;
 
 	/// CRIAR UMA ENUM PARA AS TABELAS
@@ -99,24 +99,24 @@ public class ConexaoHSQL {
 			+ "CONSTRAINT turma_fk_horario FOREIGN KEY (ID_TURMA_HOR) " // FK CURSO
 			+ "REFERENCES TURMA(ID_TURMA) ON DELETE CASCADE)";
 	
-	/* m√©todo construtor que cria uma conex√£o e as tabelas */
+	/* mÈtodo construtor que cria uma conex„o e as tabelas */
 	private ConexaoHSQL() {
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
 		} catch (ClassNotFoundException | SQLException e) {
 			System.err
-					.println("N√£o foi possivel se conectar com o banco de dados");
+					.println("N„o foi possivel se conectar com o banco de dados");
 			System.out.println(e);
 		}
 		//createTables();
 	}
 
 	/**
-	 * Este m√©todo retorna uma conex√£o, se ela ainda n√£o existir, √© criada uma
+	 * Este mÈtodo retorna uma conex„o, se ela ainda n„o existir, È criada uma
 	 * nova.
 	 * 
-	 * @return Uma inst√¢ncia da conex√£o com o banco.
+	 * @return Uma inst‚ncia da conex„o com o banco.
 	 */
 	public static ConexaoHSQL getInstance() {
 		if (conexao == null) {
@@ -126,7 +126,7 @@ public class ConexaoHSQL {
 	}
 
 	/**
-	 * Este m√©todo cria todas as tabelas do banco.
+	 * Este mÈtodo cria todas as tabelas do banco.
 	 */
 	public void createTables() {
 		try {
@@ -139,12 +139,12 @@ public class ConexaoHSQL {
 			conn.createStatement().execute("CREATE TABLE IF NOT EXISTS " + TABELA_HORARIO);
 			// Add more Tables
 		} catch (SQLException e) {
-			System.err.print("Ocorreu um erro na cria√ß√£o das tabelas: " + e);
+			System.err.print("Ocorreu um erro na criaÁ„o das tabelas: " + e);
 		}
 	}
 
 	/**
-	 * Este m√©todo deleta todas as tabelas do banco.
+	 * Este mÈtodo deleta todas as tabelas do banco.
 	 */
 	public void dropTables() {
 		try {
@@ -162,35 +162,35 @@ public class ConexaoHSQL {
 	}
 
 	/**
-	 * Este m√©todo retorna a conex√£o com o banco de dados.
+	 * Este mÈtodo retorna a conex„o com o banco de dados.
 	 * 
-	 * @return Conex√£o com o banco de dados.
+	 * @return Conex„o com o banco de dados.
 	 */
 	public Connection getConnection() {
 		return conn;
 	}
 
 	/**
-	 * Este m√©todo retorna um statement da conex√£o para a declara√ß√£o dos
+	 * Este mÈtodo retorna um statement da conex„o para a declaraÁ„o dos
 	 * comandos SQL.
 	 * 
-	 * @return Uma inst√¢ncia de statement.
+	 * @return Uma inst‚ncia de statement.
 	 */
 	public Statement getStatement() {
 		try {
 			return conn.createStatement();
 		} catch (SQLException e) {
-			System.err.println("N√£o foi possivel criar o statement" + e);
+			System.err.println("N„o foi possivel criar o statement" + e);
 		}
 		return null;
 	}
 
 	/**
-	 * Este m√©todo executa um SQL em um statement para altera√ß√£o do banco de
+	 * Este mÈtodo executa um SQL em um statement para alteraÁ„o do banco de
 	 * dados.
 	 * 
 	 * @param SQL
-	 *            Instru√ß√£o SQL.
+	 *            InstruÁ„o SQL.
 	 */
 	public void executeSQLStatement(String SQL) {
 		try {
@@ -202,11 +202,11 @@ public class ConexaoHSQL {
 	}
 
 	/**
-	 * Este m√©todo executa um SQL em um statement para recupera√ß√£o de registro
+	 * Este mÈtodo executa um SQL em um statement para recuperaÁ„o de registro
 	 * no banco de dados e atribui-os a um conjunto de resultados.
 	 * 
 	 * @param SQL
-	 *            Instru√ß√£o SQL.
+	 *            InstruÁ„o SQL.
 	 * @return Um conjunto de resultados (ResultSet).
 	 */
 	public ResultSet getResultSet(String SQL) {
@@ -219,7 +219,7 @@ public class ConexaoHSQL {
 	}
 	
 	/**
-	 * Fecha a conex√£o.
+	 * Fecha a conex„o.
 	 */
 	public void closeConetion() {
 		if (getConnection() != null) {

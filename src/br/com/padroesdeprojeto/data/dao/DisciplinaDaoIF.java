@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import br.com.padroesdeprojeto.bean.Disciplina;
 
 /**
- * Esta interface segue server para padronizar a implementaÃ§Ã£o dos mÃ©todos de
- * manipulaÃ§Ã£o dos dados tornando assim mais maleÃ¡vel a troca do banco de dados.
+ * Esta interface segue server para padronizar a implementação dos métodos de
+ * manipulação dos dados tornando assim mais maleável a troca do banco de dados.
  * 
  * @author Leonardo Soares Rodrigues.
  * 
@@ -14,7 +14,7 @@ import br.com.padroesdeprojeto.bean.Disciplina;
 public interface DisciplinaDaoIF {
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de inserÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de inserção
 	 * de disciplina do banco de dados.
 	 * 
 	 * @param d
@@ -22,21 +22,21 @@ public interface DisciplinaDaoIF {
 	 *            banco.
 	 * @param siglaCurso
 	 * 			O id do curso da disciplina
-	 * @param idDisciplina
+	 * @param idPeriodo
 	 * 			O id do Periodo a ser cadastrado
 	 * 
 	 */
 	public void insere(Disciplina d, String siglaCurso, String idPeriodo);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de alteraÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de alteração
 	 * de disciplina do banco de dados.
 	 * 
 	 * @param d
-	 *            Um objeto do tipo {@link Disciplina} com as devidas alteraÃ§Ãµes
-	 *            onde irÃ¡ substituir os dados de outro no banco.
+	 *            Um objeto do tipo {@link Disciplina} com as devidas alterações
+	 *            onde irá substituir os dados de outro no banco.
 	 * @param id
-	 *            Um numero que representa um Ã­ndice da disciplina que serÃ¡
+	 *            Um numero que representa um índice da disciplina que será
 	 *            alterada no banco.
 	 * @param siglaCurso
 	 *            A sigla do curso.
@@ -44,11 +44,11 @@ public interface DisciplinaDaoIF {
 	public void altera(Disciplina d, String id, String siglaCurso);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de remoÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de remoção
 	 * de disciplina do banco de dados.
 	 * 
 	 * @param id
-	 *            Uma String que representa um Ã­ndice da disciplina que serÃ¡
+	 *            Uma String que representa um índice da disciplina que será
 	 *            deletada no banco.
 	 * @param siglaCurso
 	 *            A sigla do curso.
@@ -56,7 +56,7 @@ public interface DisciplinaDaoIF {
 	public void deleta(String id, String siglaCurso);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo que recupera
+	 * Esta assinatura de método serve para implementação do método que recupera
 	 * todas as disciplina do banco de dados em uma lista.
 	 * 
 	 * @return Lista (ArrayList) de objetos do tipo {@link Disciplina}.
@@ -64,7 +64,7 @@ public interface DisciplinaDaoIF {
 	public ArrayList<Disciplina> getAllDiciplinas(String siglaCurso);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo que recupera
+	 * Esta assinatura de método serve para implementação do método que recupera
 	 * todas as disciplina do banco de dados em uma lista a partir da sigla da
 	 * disciplina e da sigla do curso.
 	 * 

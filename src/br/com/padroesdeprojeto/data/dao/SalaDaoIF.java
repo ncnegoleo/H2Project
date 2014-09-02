@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import br.com.padroesdeprojeto.bean.Sala;
 
 /**
- * Esta interface segue server para padronizar a implementaÃ§Ã£o dos mÃ©todos de
- * manipulaÃ§Ã£o dos dados tornando assim mais maleÃ¡vel a troca do banco de dados.
+ * Esta interface segue server para padronizar a implementação dos métodos de
+ * manipulação dos dados tornando assim mais maleável a troca do banco de dados.
  * 
  * @author Leonardo Soares Rodrigues.
  *
  */
 public interface SalaDaoIF {
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de inserÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de inserção
 	 * de salas do banco de dados.
 	 * 
 	 * @param s
@@ -22,30 +22,27 @@ public interface SalaDaoIF {
 	public void insere(Sala s);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de alteraÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de alteração
 	 * de salas do banco de dados.
 	 * 
 	 * @param s
-	 *            Um objeto do tipo {@link Sala} com as devidas alteraÃ§Ãµes onde
-	 *            irÃ¡ substituir os dados de outro no banco.
-	 * @param codigo
-	 *            Uma String que representa um Ã­ndice da sala que serÃ¡
-	 *            alterada no banco.
+	 *            Um objeto do tipo {@link Sala} com as devidas alterações onde
+	 *            irá substituir os dados de outro no banco.
 	 */
 	public void altera(Sala s);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de remoÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de remoção
 	 * de salas do banco de dados.
 	 * 
 	 * @param idSala
-	 *            Uma String que representa um Ã­ndice da sala que serÃ¡
+	 *            Uma String que representa um índice da sala que será
 	 *            deletada no banco.
 	 */
 	public void deleta(String idSala);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo que recupera
+	 * Esta assinatura de método serve para implementação do método que recupera
 	 * todas as salas do banco de dados em uma lista.
 	 * 
 	 * @return Lista (ArrayList) de objetos do tipo {@link Sala}.
@@ -53,7 +50,7 @@ public interface SalaDaoIF {
 	public ArrayList<Sala> getAllSalas();
 	
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo que
+	 * Esta assinatura de método serve para implementação do método que
 	 * recupera uma sala do banco de dados. 
 	 * 
 	 * @param idSala

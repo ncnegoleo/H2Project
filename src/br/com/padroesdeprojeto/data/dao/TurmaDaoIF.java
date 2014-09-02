@@ -6,8 +6,8 @@ import br.com.padroesdeprojeto.bean.Periodo;
 import br.com.padroesdeprojeto.bean.Turma;
 
 /**
- * Esta interface segue server para padronizar a implementaÃ§Ã£o dos mÃ©todos de
- * manipulaÃ§Ã£o dos dados tornando assim mais maleÃ¡vel a troca do banco de dados.
+ * Esta interface segue server para padronizar a implementação dos métodos de
+ * manipulação dos dados tornando assim mais maleável a troca do banco de dados.
  * 
  * @author Leonardo Soares Rodrigues.
  * 
@@ -15,7 +15,7 @@ import br.com.padroesdeprojeto.bean.Turma;
 public interface TurmaDaoIF {
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de inserÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de inserção
 	 * de turmas do banco de dados.
 	 * 
 	 * @param t
@@ -26,7 +26,7 @@ public interface TurmaDaoIF {
 	public void insere(Turma t);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de alteraÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de alteração
 	 * de turma do banco de dados.
 	 * 
 	 * @param t
@@ -39,7 +39,7 @@ public interface TurmaDaoIF {
 	public void altera(Turma t, String id);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo de remoÃ§Ã£o
+	 * Esta assinatura de método serve para implementação do método de remoção
 	 * de uma turma no banco.
 	 * 
 	 * @param id
@@ -50,7 +50,7 @@ public interface TurmaDaoIF {
 	public void deleta(String id);
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para implementaÃ§Ã£o do mÃ©todo que recupera
+	 * Esta assinatura de método serve para implementação do método que recupera
 	 * todas as turma do banco de dados em uma lista.
 	 * 
 	 * @return Lista (ArrayList) de objetos do tipo {@link Periodo}.
@@ -60,11 +60,11 @@ public interface TurmaDaoIF {
 	public ArrayList<Turma> getAllTurmas();
 
 	/**
-	 * Esta assinatura de mÃ©todo serve para a implementaÃ§Ã£o do mÃ©todo que
+	 * Esta assinatura de método serve para a implementação do método que
 	 * recupera uma turma no banco de dados a partir do nome dele.
 	 * 
-	 * @param nome
-	 *            O nome da turma a ser recuperado do banco.
+	 * @param id
+	 *            O id da turma a ser recuperado do banco.
 	 *            
 	 * @return Objeto do tipo {@link Turma}
 	 * 

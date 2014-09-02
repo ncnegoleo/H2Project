@@ -1,7 +1,7 @@
 package br.com.padroesdeprojeto.bean;
 
 /**
- * Esta classe serve como modelo para a gravaÃ§Ã£o dos objetos Sala na base de
+ * Esta classe serve como modelo para a gravação dos objetos Sala na base de
  * dados.
  * @author NegoLeo
  *

@@ -8,7 +8,7 @@ import br.com.padroesdeprojeto.data.dao.PeriodoDaoIF;
 import br.com.padroesdeprojeto.bean.Periodo;
 
 /**
- * Esta classe faz a intera√ß√£o da entrada dos dados do periodo com o banco de
+ * Esta classe faz a interaÁ„o da entrada dos dados do periodo com o banco de
  * dados.
  * 
  * @author Leonardo Soares.
@@ -26,7 +26,7 @@ public class HSQLPeriodo implements PeriodoDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -40,7 +40,7 @@ public class HSQLPeriodo implements PeriodoDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 
 	}
@@ -60,7 +60,7 @@ public class HSQLPeriodo implements PeriodoDaoIF {
 		// Procura e retorna todos os registros //
 		try {
 			while (resultSet.next()) {
-				// atribui os registros encontrados em objeto que s√£o
+				// atribui os registros encontrados em objeto que s„o
 				// adicionados numa lista
 				periodos.add(new Periodo(resultSet.getString(1), 
 						resultSet.getString(2)));
@@ -72,7 +72,7 @@ public class HSQLPeriodo implements PeriodoDaoIF {
 			e.printStackTrace();
 		}
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna os professores
@@ -106,7 +106,7 @@ public class HSQLPeriodo implements PeriodoDaoIF {
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna o professor

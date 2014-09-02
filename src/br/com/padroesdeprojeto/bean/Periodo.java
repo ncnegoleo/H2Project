@@ -1,10 +1,14 @@
 package br.com.padroesdeprojeto.bean;
 
-import java.io.Serializable;
 
-public class Periodo implements Serializable {
-
-	private static final long serialVersionUID = 6867449507036008446L;
+/**
+ * Esta classe serve como modelo para a gravação dos objetos Periodo na base
+ * de dados.
+ * 
+ * @author Leonardo Soares Rodrigues.
+ * 
+ */
+public class Periodo {
 	
 	private String nomePeriodo = "";
 	private String siglaCurso = "";

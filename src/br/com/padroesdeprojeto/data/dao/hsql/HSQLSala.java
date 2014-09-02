@@ -8,7 +8,7 @@ import br.com.padroesdeprojeto.data.dao.SalaDaoIF;
 import br.com.padroesdeprojeto.bean.Sala;
 
 /**
- * Esta classe faz a intera√ß√£o da entrada dos dados da sala com o banco de
+ * Esta classe faz a interaÁ„o da entrada dos dados da sala com o banco de
  * dados.
  * 
  * @author Leonardo Soares.
@@ -26,7 +26,7 @@ public class HSQLSala implements SalaDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -40,7 +40,7 @@ public class HSQLSala implements SalaDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -53,7 +53,7 @@ public class HSQLSala implements SalaDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -84,7 +84,7 @@ public class HSQLSala implements SalaDaoIF {
 			e.printStackTrace();
 		}
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna as salas
@@ -117,7 +117,7 @@ public class HSQLSala implements SalaDaoIF {
 			e.printStackTrace();
 		}
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna o professor

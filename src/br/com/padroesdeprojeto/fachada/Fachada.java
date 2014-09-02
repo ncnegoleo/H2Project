@@ -4,8 +4,8 @@ import br.com.padroesdeprojeto.recurso.AbstractFactoryRecurso;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
- * Esta classe controla todas as aÃ§Ãµes de cadastro, alteraÃ§Ã£o, deleÃ§Ã£o e
- * recuperaÃ§Ã£o de informaÃ§Ãµes dos recursos do sistema.
+ * Esta classe controla todas as ações de cadastro, alteração, deleção e
+ * recuperação de informações dos recursos do sistema.
  * 
  * @author Leonardo Soares.
  * 

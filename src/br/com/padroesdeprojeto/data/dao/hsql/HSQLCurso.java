@@ -8,7 +8,7 @@ import br.com.padroesdeprojeto.data.dao.CursoDaoIF;
 import br.com.padroesdeprojeto.bean.Curso;
 
 /**
- * Esta classe faz a intera√ß√£o da entrada dos dados do curso com o banco de
+ * Esta classe faz a interaÁ„o da entrada dos dados do curso com o banco de
  * dados.
  * 
  * @author Leonardo Soares.
@@ -26,7 +26,7 @@ public class HSQLCurso implements CursoDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -40,7 +40,7 @@ public class HSQLCurso implements CursoDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -53,7 +53,7 @@ public class HSQLCurso implements CursoDaoIF {
 		// executa o sql no SGBD
 		ConexaoHSQL.getInstance().executeSQLStatement(SQL_STATEMENT);
 		
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 	}
 
@@ -85,7 +85,7 @@ public class HSQLCurso implements CursoDaoIF {
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 		
 		// retorna os cursos
@@ -119,7 +119,7 @@ public class HSQLCurso implements CursoDaoIF {
 			e.printStackTrace();
 		}
 
-		// fecha a conex√£o
+		// fecha a conex„o
 		ConexaoHSQL.getInstance().closeConetion();
 
 		// retorna o curso

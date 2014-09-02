@@ -1,5 +1,12 @@
 package br.com.padroesdeprojeto.bean;
 
+/**
+ * Esta classe serve como modelo para a gravação dos objetos Horario na base
+ * de dados.
+ * 
+ * @author Leonardo Soares Rodrigues.
+ * 
+ */
 public class Horario {
 	
 	private String idTurma = "";

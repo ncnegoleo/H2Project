@@ -7,7 +7,7 @@ import br.com.padroesdeprojeto.validation.H2Validation;
 import br.com.padroesdeprojeto.validation.exceptions.H2Exception;
 
 /**
- * Esta classe serve para a manipula√ß√£o dos recursos de turma.
+ * Esta classe serve para a manipulaÁ„o dos recursos de turma.
  * 
  * @author Leonardo Soares Rodrigues
  * 
@@ -18,9 +18,9 @@ public class RecursoTurma {
 	private final String DISC = "Disciplina";
 	private final String SALA = "Sala";
 	private final String PERI = "Periodo";
-	
+
 	/**
-	 * Este m√©todo serve controlador para a adi√ß√£o de novas turmas no sistema.
+	 * Este mÈtodo serve controlador para a adiÁ„o de novas turmas no sistema.
 	 * 
 	 * @param idTurma
 	 *            Id da turma a ser cadastrada
@@ -36,7 +36,7 @@ public class RecursoTurma {
 	 *            Id do periodo a ser referenciado
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou ja exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou ja exista
 	 *             o id da turma cadastrado na base de dados
 	 */
 	public void addTurma(String idTurma, String idCurso,
@@ -49,7 +49,7 @@ public class RecursoTurma {
 				identificadorDisciplina, identificadorSala,
 				identificadorPeriodo };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -61,13 +61,16 @@ public class RecursoTurma {
 		// Verifica se existe o professor cadastrado
 		H2Validation.validaObjetosNaoNulos(
 				AbstractFactoryDao.createProfessorDaoIF()
-				.getProfessorByMatricula(identificadorProfessor),
+						.getProfessorByMatricula(identificadorProfessor),
 				H2ErrorMessages.PROFESSORNAOCADASTRADO.getValor());
 
 		// Verifica se existe o disciplina cadastrada
-		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao.createDisciplinaDaoIF()
-				.getDisciplinaBySigla(identificadorDisciplina,idCurso),
-				H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
+		H2Validation
+				.validaObjetosNaoNulos(
+						AbstractFactoryDao.createDisciplinaDaoIF()
+								.getDisciplinaBySigla(identificadorDisciplina,
+										idCurso),
+						H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 
 		// Verifica se existe a sala cadastrada
 		H2Validation.validaObjetosNaoNulos(AbstractFactoryDao.createSalaDaoIF()
@@ -87,7 +90,7 @@ public class RecursoTurma {
 		turma.setIdSala(identificadorSala);
 		turma.setIdPeri(identificadorPeriodo);
 
-		// verifica se n√£o existe professores com a mesma matricula no banco.
+		// verifica se n„o existe professores com a mesma matricula no banco.
 		if (H2Validation.validaObjetosNulos(AbstractFactoryDao
 				.createTurmaDaoIF().getTurmaById(idTurma),
 				H2ErrorMessages.TURMAJACADASTRADA.getValor())) {
@@ -96,22 +99,20 @@ public class RecursoTurma {
 			AbstractFactoryDao.createTurmaDaoIF().insere(turma);
 		}
 	}
-	
+
 	/**
-	 * Este m√©todo como controlador para a altera√ß√£o de disciplinas na base de
+	 * Este mÈtodo como controlador para a alteraÁ„o de disciplinas na base de
 	 * dados
 	 * 
-	 * @param idCurso
-	 *            O id de um curso j√° cadastrado.
-	 * @param sigla
+	 * @param idTurma
 	 *            A sigla da Disciplina
-	 * @param atributo
+	 * @param campo
 	 *            O nome ou a carga horaria a ser alterada.
 	 * @param novoValor
 	 *            Um novo valor para o atributo a ser alterado.
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o id da disciplina cadastrado na base de dados
 	 */
 	public void alteraTurma(String idTurma, String campo, String novoValor)
@@ -119,7 +120,7 @@ public class RecursoTurma {
 
 		String[] params = { idTurma, campo, novoValor };
 
-		// Verifica se os parametros s√£o nulos ou vazios
+		// Verifica se os parametros s„o nulos ou vazios
 		H2Validation.validaParametros(params,
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
@@ -127,57 +128,58 @@ public class RecursoTurma {
 		Turma turma = AbstractFactoryDao.createTurmaDaoIF().getTurmaById(
 				idTurma);
 
-		// Verifica se a turma est√° cadastrada no banco
+		// Verifica se a turma est· cadastrada no banco
 		H2Validation.validaObjetosNaoNulos(turma,
 				H2ErrorMessages.TURMANAOCADASTRADA.getValor());
 
 		switch (campo) {
 		case PROF:
-			// Verifica se o professor est√° cadastrada no banco
+			// Verifica se o professor est· cadastrada no banco
 			H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 					.createProfessorDaoIF().getProfessorByMatricula(novoValor),
 					H2ErrorMessages.PROFESSORNAOCADASTRADO.getValor());
 			turma.setIdProf(novoValor);
 			break;
 		case DISC:
-			// Verifica se o professor est√° cadastrada no banco
-			H2Validation.validaObjetosNaoNulos(
-					AbstractFactoryDao.createDisciplinaDaoIF()
-					.getDisciplinaBySigla(novoValor, turma.getIdCurso()),
-					H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
+			// Verifica se o professor est· cadastrada no banco
+			H2Validation
+					.validaObjetosNaoNulos(
+							AbstractFactoryDao.createDisciplinaDaoIF()
+									.getDisciplinaBySigla(novoValor,
+											turma.getIdCurso()),
+							H2ErrorMessages.DISCIPLINANAOCADASTRADA.getValor());
 			turma.setIdDisc(novoValor);
 			break;
 		case SALA:
-			// Verifica se o professor est√° cadastrada no banco
+			// Verifica se o professor est· cadastrada no banco
 			H2Validation.validaObjetosNaoNulos(AbstractFactoryDao
 					.createSalaDaoIF().getSalaById(novoValor),
 					H2ErrorMessages.SALANAOCADASTRADA.getValor());
-			turma.setIdCurso(novoValor);
+			turma.setIdSala(novoValor);
 			break;
 		case PERI:
-			// Verifica se o professor est√° cadastrada no banco
+			// Verifica se o professor est· cadastrada no banco
 			H2Validation.validaObjetosNaoNulos(
 					AbstractFactoryDao.createPeriodoDaoIF().getPeriodoByName(
-					novoValor, turma.getIdCurso()),
+							novoValor, turma.getIdCurso()),
 					H2ErrorMessages.PERIODONAOCADASTRADO.getValor());
 			turma.setIdPeri(novoValor);
 			break;
 		default:
 			throw new H2Exception(H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 		}
-		
+
 		AbstractFactoryDao.createTurmaDaoIF().altera(turma, idTurma);
 	}
-	
+
 	/**
-	 * Este m√©todo como controlador para a remo√ß√£o de turmas na base de
-	 * dados
+	 * Este mÈtodo como controlador para a remoÁ„o de turmas na base de dados
 	 * 
 	 * @param idTurma
 	 *            O id da Turma
 	 * 
 	 * @throws H2Exception
-	 *             Lan√ßada caso algum atributo seja nulo ou vazio, ou n√£o exista
+	 *             LanÁada caso algum atributo seja nulo ou vazio, ou n„o exista
 	 *             o id cadastrado na base de dados
 	 */
 	public void removeTurma(String idTurma) throws H2Exception {
@@ -194,12 +196,17 @@ public class RecursoTurma {
 		// Remove a turma da base de dados
 		AbstractFactoryDao.createTurmaDaoIF().deleta(idTurma);
 	}
-	
+
 	/**
+	 * Este metodo recupera uma String com os dados da Turma.
 	 * 
 	 * @param idTurma
-	 * @return
+	 * 
+	 * @return retorna uma String com os dados da turma
+	 * 
 	 * @throws H2Exception
+	 *             Caso a turma n„o exista ou a entrada seja nula ou invalida È
+	 *             lanÁada uma exeÁ„o.
 	 */
 	public String getTurma(String idTurma) throws H2Exception {
 
@@ -208,7 +215,7 @@ public class RecursoTurma {
 				H2ErrorMessages.ATRIBUTOINVALIDO.getValor());
 
 		// se existir, retorna uma turma com a matricula igual a do
-		// par√¢metro no banco, se n√£o existir o valor inst√¢ncia ser√° nulo.
+		// par‚metro no banco, se n„o existir o valor inst‚ncia ser· nulo.
 		Turma turma = AbstractFactoryDao.createTurmaDaoIF().getTurmaById(
 				idTurma);
 
