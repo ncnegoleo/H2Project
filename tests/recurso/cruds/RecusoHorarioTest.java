@@ -278,7 +278,7 @@ public class RecusoHorarioTest {
 		fachada.alocaTurmaAoHorario("TPPADS", "Segunda", 18, 22);
 		fachada.alocaTurmaAoHorario("TPPADS", "Quarta", 18, 20);
 		String horario = fachada.getHorario("TPPADS");
-		assertEquals("Segunda: 18 Ã s 22 Quarta: 18 Ã s 20 ", horario);
+		assertEquals("Segunda: 18 às 22 Quarta: 18 às 20 ", horario);
 	}
 	
 	@Test(expected = H2Exception.class)
